@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML Table</title>
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			width: 10%;
+			border: 1px solid;
+			text-align: center;
+			padding: 10px 5px 10px 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>7 am - 9 am</th>
+				<th>9 am - 11 am</th>
+				<th>11 am - 12 pm</th>
+				<th>12 pm - 2 pm</th>
+				<th>2 pm - 4 pm</th>
+				<th>6 pm - 8 pm</th>
+				<th>8 pm - 10 pm</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Monday</th>
+				<td class="c5" colspan="7">Reserved for groups</td>
+			</tr>
+			<tr>
+				<th>Tuesday</th>
+				<td class="c3">Bicycle Repair</td>
+				<td class="c1" colspan="4">Beginner Cycling</td>
+				<td class="c4" colspan="2">Trip Planing</td>
+			</tr>
+			<tr>
+				<th>Wednesday</th>
+				<td class="c2" rowspan="2">Long Distance Cycling Part 1</td>
+				<td></td>
+				<td class="c1">Beginner Cycling</td>
+				<td class="c4" rowspan="2">Trip Planing for Asia</td>
+				<td class="c3" rowspan="3" colspan="2">Bicycle Rapair</td>
+				<td class="c2" rowspan="2">Long Distance Cycling Part 2</td>
+			</tr>
+			<tr>
+				<th>Thursday</th>
+				<td class="c1">Beginner Cycling</td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Friday</th>
+				<td class="c4" rowspan="4">Trip Planing for Europe</td>
+				<td></td>
+				<td class="c1">Beginner Cycling</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Saturday</th>
+				<td class="c3" colspan="3" rowspan="2">Bicycle Rapair</td>
+				<td class="c1">Beginner Cycling</td>
+				<td class="c2" colspan="2" rowspan="2">Long Distance Cycling Part 1 and 2</td>
+			</tr>
+			<tr>
+				<th>Sunday</th>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Holidays</th>
+				<td class="c2">Long Distance Cycling</td>
+				<td class="c5" colspan="5">No Seminars</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

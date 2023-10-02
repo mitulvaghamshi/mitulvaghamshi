@@ -1,0 +1,202 @@
+/* global selector for all elements */
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* appbar style */
+.app-bar {
+    top: 0;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-image: linear-gradient(to right, #a50098, #6C0094);
+    margin-bottom: 10px;
+    z-index: 2;
+}
+
+/* appbar title */
+.title {
+    color: white;
+    height: 50px;
+    margin: 10px 20px 5px 10px;
+    vertical-align: middle;
+}
+
+/* page background image style */
+/* .background {
+    width: 45%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    z-index: 0;
+} */
+
+/* page foreground image style */
+/* .foreground {
+    float: left;
+    width: 70%;
+    top: 150px;
+    left: 10px;
+    position: fixed;
+    z-index: 1;
+} */
+
+/* body content, form and list container */
+.main-content {
+    padding: 30px;
+    border-radius: 10px;
+    border: solid 5px #6C0094;
+    margin: 80px 20px 20px 10px;
+}
+
+/* list item style */
+.list-item {
+    border: solid 3px #6B0094;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    list-style-type: none;
+    font-size: large;
+    color: white;
+}
+
+/* hour element style of list item */
+.list-thumb {
+    width: 100px;
+    height: 50px;
+    background-color: #6C0094;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14pt;
+}
+
+/* due time element of list item */
+.task-due {
+    float: right;
+    line-height: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #6C0094;
+    border-radius: 0px 10px 10px 0px;
+}
+
+/* list heading style */
+.list-heading {
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+/* list item hover style */
+.list-header,
+.list-item:hover {
+    background-color: #6C0094;
+}
+
+/* list item hour hover style */
+.list-thumb:hover,
+.task-due:hover,
+.color {
+    background-color: #A00094;
+}
+
+/* input form label style */
+.form-label {
+    font-size: 22pt;
+    line-height: 50px;
+    color: #3F3D56;
+    display: inline-block;
+}
+
+/* style for right alignrd elements: list, form, textboxes, buttons */
+.form-input {
+    height: 50px;
+    border-radius: 100px;
+    border-width: 3px;
+    font-size: 20pt;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-color: #6C63FF;
+    color: #3F3D56;
+    float: right;
+}
+
+.form-input1 {
+    float: right;
+}
+
+/* list and form lement hover style */
+.form-input:hover {
+    border-radius: 10px 0px 0px 10px;
+    border-color: #FF6584;
+}
+
+/* text input width */
+input[type="text"] {
+    width: 95%;
+    background-color: #e2dfff;
+}
+
+/* form buttons style: submit, reset */
+.form-button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 20pt;
+    border-radius: 30px;
+    background-color: #6C63FF;
+    color: white;
+}
+
+/* button hover style */
+.form-button:hover {
+    background-color: #FF6584;
+}
+
+@media only screen and (max-width: 1220px) {
+
+    .list-item,
+    .list-desc {
+        padding: 10px;
+    }
+
+    .list-desc,
+    .list-heading {
+        display: block;
+        float: none;
+    }
+}
+
+/* hide background and foreground images on screen width less then 1300px */
+@media only screen and (max-width:768px) {
+
+    .background,
+    .foreground {
+        display: none;
+    }
+
+    .form-input {
+        float: none;
+    }
+
+    .list-item,
+    .list-desc {
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .list-desc,
+    .task-due {
+        display: block;
+        float: none;
+    }
+
+    .main-content {
+        float: none;
+        display: flex;
+        flex-wrap: wrap;
+        width: fit-content;
+        padding: 30px;
+    }
+}

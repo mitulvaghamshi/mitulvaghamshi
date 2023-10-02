@@ -1,0 +1,162 @@
+/* global selector for all elements */
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+/* font family */
+body,
+input {
+    font-family: sans-serif;
+}
+
+/* app bar design */
+.app-bar {
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    margin-bottom: 10px;
+    box-shadow: 10px black;
+    background-color: #3e85ff;
+}
+
+/* placeholder image width */
+.image {
+    width: 90%;
+}
+
+/* signup / login form */
+form {
+    display: flex;
+    overflow: hidden;
+    padding: 0rem 5rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* form input elements */
+.input-field {
+    width: 100%;
+    margin: 10px;
+    max-width: 350px;
+    text-align: left;
+    border-radius: 30px;
+    padding: 5px 20px 5px 20px;
+    background-color: #f0f0f0;
+}
+
+/* password mismatch input background color */
+.error {
+    background-color: #FF857C;
+    border-radius: 30px;
+    color: white;
+}
+
+/* input elements */
+.input-field input,
+textarea {
+    width: 100%;
+    border: none;
+    color: #333;
+    outline: none;
+    font-weight: 600;
+    background: none;
+    line-height: 50px;
+    font-size: 1.2rem;
+}
+
+/* input placeholder style */
+.input-field input::placeholder {
+    color: #8A8A8A;
+    font-weight: 500;
+}
+
+/* signup form, gender labels positions*/
+.gender-label {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* gender label padding */
+.gender {
+    padding: 5px 20px 5px 20px;
+}
+
+/* button style */
+.btn {
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 30px;
+    text-transform: uppercase;
+    background-color: #5995fd;
+}
+
+/* button focus */
+.btn:hover {
+    background-color: #417AFF;
+}
+
+/* login, registration screens */
+.signin-signup {
+    display: grid;
+    margin-top: 80px;
+    text-align: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* app bar title */
+.app-bar .title {
+    color: white;
+    display: inline;
+    vertical-align: middle;
+}
+
+/* form title */
+form .title {
+    font-size: 2.4rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* app bar logo */
+.logo {
+    width: 50px;
+    height: 50px;
+    margin: 5px 15px 15px 5px;
+    vertical-align: middle;
+}
+
+/* for tablet and mobile screen size */
+@media only screen and (max-width: 768px) {
+
+    .background,
+    .foreground {
+        display: none;
+    }
+
+    .list-item {
+        border: 2px solid #6E01C6;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .item-text {
+        order: 4;
+    }
+
+    .main-content {
+        float: none;
+        padding: 30px;
+        width: fit-content;
+    }
+}

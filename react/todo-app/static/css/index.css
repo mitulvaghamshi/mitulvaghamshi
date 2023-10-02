@@ -1,0 +1,17 @@
+body {
+  margin: auto;
+  padding: 30px;
+  color: white;
+  text-align: center;
+  background-color: #282c34;
+}
+
+hr {
+  margin: 30px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 32pt;
+  font-weight: bold;
+}

@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "run": "deno-create-react-app run",
+    "build": "deno-create-react-app build",
+    "serve": "deno run --allow-net --allow-read https://deno.land/std@0.157.0/http/file_server.ts dist/build/",
+    "install-cra": "deno install -A --unstable -n deno-create-react-app https://deno.land/x/create_react_app/mod.ts"
+  }
+}

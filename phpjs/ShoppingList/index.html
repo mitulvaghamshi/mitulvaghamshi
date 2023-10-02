@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<!-- A single page shoping list web-application using JS(Ajax) and PHP -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoping List</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- An app bar with icon and title -->
+    <div class="app-bar">
+        <h1 class="title">Shoping List</h1>
+    </div>
+
+    <!-- backgroung graphics -->
+    <!-- <img class="background" src="task.png" alt="background image"> -->
+    <!-- <img class="background foreground" src="fg.svg" alt="background image"> -->
+
+    <!-- input and list elements -->
+    <div class="main-content">
+        <ul>
+            <!-- input controls -->
+            <li class="list-item">
+                <!-- list item name -->
+                <input id="item" class="item-text" type="text" required placeholder="Enter item name" />
+                <!-- list item quantity -->
+                <input id="quantity" class="quantity-text" type="number" min="1" value="1" required />
+                <!-- add item button -->
+                <input id="add-btn" class="add-button" type="button" value="ADD" />
+            </li>
+        </ul>
+        <!-- list divider -->
+        <div class="divider"></div>
+        <!-- list items (populated from databse using ajax request) -->
+        <ul id="item-list"> </ul>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+
+</html>

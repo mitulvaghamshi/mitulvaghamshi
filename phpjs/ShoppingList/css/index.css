@@ -1,0 +1,126 @@
+/* global selector for all elements */
+* {
+    margin: 0%;
+    padding: 0%;
+    font-size: 20pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* appbar style */
+.app-bar {
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    margin-bottom: 10px;
+    box-shadow: 10px black;
+    background-image: linear-gradient(to right, #A905C5, #B305E3, #A704DB, #5c007e, #240033);
+}
+
+/* appbar title */
+.title {
+    color: white;
+    height: 50px;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+/* page background image style */
+/* .background {
+    z-index: 0;
+    width: 45%;
+    float: left;
+    height: 100%;
+    position: fixed;
+} */
+
+/* page foreground image style */
+/* .foreground {
+    z-index: 1;
+    left: 10px;
+    top: 150px;
+    width: 35%;
+    float: left;
+    position: fixed;
+} */
+
+/* body content, input and list */
+.main-content {
+    padding: 30px;
+    border-radius: 10px;
+    border: solid 5px #6E01C6;
+    margin: 80px 20px 20px 10px;
+}
+
+/* shoping list item */
+.list-item {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    border-radius: 10px;
+    list-style-type: none;
+}
+
+/* list item isdone check box */
+.checkbox {
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+/* shoping item quantity */
+.quantity-text {
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* shoping item name */
+.item-text {
+    margin: 5px;
+    flex-grow: 1;
+    color: black;
+    padding: 8px;
+}
+
+/* add new item button */
+.add-button {
+    margin: 5px;
+    float: right;
+    padding: 5px;
+    background-color: white;
+}
+
+/* list item devider */
+.divider {
+    width: auto;
+    height: 5px;
+    margin: 30px;
+    background-color: #6E01C6;
+}
+
+/* for tablet and mobile screen size */
+@media only screen and (max-width: 768px) {
+
+    /* .background,
+    .foreground {
+        display: none;
+    } */
+
+    .list-item {
+        border: 2px solid #6E01C6;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .item-text {
+        order: 4;
+    }
+
+    .main-content {
+        padding: 30px;
+        width: fit-content;
+    }
+}

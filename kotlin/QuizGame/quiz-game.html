@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-------------------------------------------------------------------
+- This file will create simple single page structure for a quiz game
+- It requires user to fill up form data to play the game
+- The game is made up of 13 simple true/false based questions
+- After successful attempt user receives a certificate of completion
+- The game will record user into web browser's local storege
+- The implementation of this game is done using javascript
+-
+- Date: Nov 16, 2020
+--------------------------------------------------------------------->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        /* A default page color and larger font for desktop devices */
+        body {
+            background-color: #fafafa;
+            font-size: 1.2rem;
+        }
+
+        /* A base, centered container with maximum 1000 pixels wide */
+        #container {
+            margin: auto;
+            max-width: 1000px;
+            border: 1px solid black;
+            border-radius: 30px;
+            text-align: center;
+            padding: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        /* A question box with thick rounded border */
+        #question-box {
+            border: 5px solid black;
+            border-radius: 30px;
+            min-height: 240px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* A quiz progress bar with user interaction disabled */
+        #progress-bar {
+            width: 100%;
+            pointer-events: none;
+        }
+
+        /* An identical style for all inputs, labels and buttons */
+        .input-items {
+            margin: 0px 0px 10px 0px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* A color picker with custom height and width */
+        .color-picker {
+            padding: 5px;
+            width: 50px;
+            height: 40px;
+            vertical-align: middle;
+        }
+
+        /* True button text and bg color */
+        #true-button {
+            color: #fafafa;
+            background-color: rgb(45, 168, 45);
+        }
+
+        /* False button text and bg color */
+        #false-button {
+            color: #fafafa;
+            background-color: rgb(168, 45, 45);
+        }
+
+        /* Game result container with certificate like look */
+        #statestics {
+            margin: 10px;
+            padding: 10px;
+            border: 5px solid black;
+            border-radius: 30px;
+        }
+
+        /* Enlarge certificate icon's size */
+        #prize-icon {
+            font-size: 3.5rem;
+            margin: 5px;
+        }
+
+        /* Reduce font size for teblet devices to 80% */
+        @media(max-width: 768px) {
+            body {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Reduce font size for mobile devices to 60% and 50% respectively */
+        @media(max-width: 490px) {
+
+            body,
+            .input-items {
+                font-size: 0.6rem;
+            }
+
+            #statestics {
+                font-size: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A main container that shows different parts of the game based on user activity -->
+    <div id="container">
+        <h1 id="title-label">Quiz Game</h1>
+        <!-- This label is displayed with user's detail on revisiting the page in future -->
+        <h5 id="last-run">&nbsp;</h5>
+        <!-- This block will contains a form to retrieve the user information -->
+        <div id="input-container">
+            <!-- The onsubmit will prevents form submition and page reload -->
+            <form action="#" name="quiz-form" onsubmit="return false;">
+                <!-- Required name of the player -->
+                <input class="input-items" type="text" id="name" name="name" required placeholder="Enter your name" />
+                <br>
+                <!-- Required age of the player -->
+                <input class="input-items" type="number" id="age" name="age" required placeholder="Enter your age" />
+                <br>
+                <!-- Optional color, default red -->
+                <label class="input-items" for="color">Please select a color: </label>
+                <input class="input-items color-picker" type="color" id="color" name="color" value="#ff0000" />
+                <br>
+                <!-- Start the quiz game -->
+                <input class="input-items" id="start-quiz" type="submit" value="Start Quiz!" />
+            </form>
+        </div>
+
+        <!-- This block will contains a quiz view with question, answer buttons and a game progress indicator -->
+        <div id="quiz-container">
+            <!-- A 13 step progress bar for 13 questions -->
+            <input type="range" id="progress-bar" value="0" max="13" min="0" step="1">
+            <!-- A question box -->
+            <div id="question-box">
+                <h1 id="question-label">&nbsp;</h1>
+            </div>
+            <!-- Answer buttons -->
+            <input class="input-items" id="true-button" type="button" value="True">
+            <input class="input-items" id="false-button" type="button" value="False">
+        </div>
+
+        <!-- This block will contains game result -->
+        <div id="statestics">
+            <!-- An icon indicationg how player answered -->
+            <h1 id="prize-icon">&nbsp;</h1>
+            <h1>Certificate of Completion</h1>
+            <!-- Display weather player pass or fail game statestics -->
+            <h1><span id="result-label">&nbsp;</span><br>
+                <br>This is to certify that Mr./Mrs. <span id="name-label"></span> is <span id="age-label"></span>
+                years old. <br>He/She has completed the Quiz Game with <span id="true-label"> </span>
+                true and <span id="false-label"></span> false answers.
+            </h1>
+            <h2>Thank you for your participation.</h2>
+        </div>
+
+        <!-- A button allows user to attemt the quiz again -->
+        <input class="input-items" type="button" id="restart-button" value="Restart!">
+    </div>
+    <script>
+        /**
+         * The game logic.
+         */
+        window.onload = () => {
+            // implements function level strict rules,
+            // MDN: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode]
+            "use strict";
+
+            /* form container */
+            const inputContainer = document.getElementById("input-container");
+            // inputContainer.style.display = "none"; // debug
+
+            /* quiz container */
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.style.display = "none"; // initially hide quiz container
+
+            /* result container */
+            const statestics = document.getElementById("statestics");
+            statestics.style.display = "none"; // hide the result container
+
+            /* add click listener to the true button */
+            const trueButton = document.getElementById("true-button");
+            trueButton.onclick = checkAnswer;
+
+            /* add click listener to the false button */
+            const falseButton = document.getElementById("false-button");
+            falseButton.onclick = checkAnswer;
+
+            /* add click listener to the quiz start button */
+            const startButton = document.getElementById("start-quiz");
+            startButton.onclick = startQuiz;
+
+            /* hide welcome label on first run */
+            const lastRun = document.getElementById("last-run");
+            lastRun.style.display = "none";
+
+            /* this is used to change font color of the title */
+            const titleLabel = document.getElementById("title-label");
+
+            /* a question box and label to display different questions */
+            const questionBox = document.getElementById("question-box");
+            const questionLabel = document.getElementById("question-label");
+
+            /* display different icon and message based on result */
+            const prizeIcon = document.getElementById("prize-icon");
+            const resultlabel = document.getElementById("result-label");
+
+            /* player detail and game result labels */
+            const nameLabel = document.getElementById("name-label");
+            const ageLabel = document.getElementById("age-label");
+            const trueLabel = document.getElementById("true-label");
+            const falseLabel = document.getElementById("false-label");
+
+            /* add click listener to reload the page to play again */
+            const restartButton = document.getElementById("restart-button");
+            restartButton.style.display = "none"; // hide restart button
+            restartButton.onclick = location.reload;
+
+            /* quiz progress increased after every question */
+            const progressBar = document.getElementById("progress-bar");
+
+            /* user input form */
+            const form = document.forms["quiz-form"];
+
+            /* an in-browser storage to record last player, older information is overridded with recent one */
+            const myStorage = window.localStorage;
+
+            /* retrieve and fill user detail in form (if any) */
+            getData();
+
+            /* an instance of question bank that provides set of questions and answers */
+            const bank = new QuestionBank();
+
+            /* an instance of result to store game result of current player */
+            const result = new Result();
+
+            /* define a player object to store user details */
+            let player = null;
+
+            /* This function is triggered when user fill the form and hit the start quiz button */
+            function startQuiz() {
+                const name = form["name"].value;            // player name
+                const age = parseInt(form["age"].value);    // player age
+                const color = form["color"].value;          // player's fav color
+
+                /* validate user details and start the quiz */
+                if (name !== null && name !== "" && age > 0 && color !== "") {
+                    inputContainer.style.display = "none"; // hide form
+                    quizContainer.style.display = "block"; // show quiz
+                    lastRun.style.display = "none"; // hide last played message
+
+                    /* initialize a player with form details */
+                    player = new Player(name, age, color);
+
+                    /* set quiz progress to zero */
+                    progressBar.value = 0;
+
+                    /* change colors of title and box border with user's fav color */
+                    titleLabel.style.color = color;
+                    questionBox.style.borderColor = color;
+
+                    /* fetch a question text from the quiestion bank */
+                    questionLabel.innerHTML = bank.getQuestionText();
+                } else {
+                    /* show form again if user enters negative value for age */
+                    form["age"].value = "";
+                    form["age"].focus();
+                }
+            }
+
+            /* This function is executed when player submit the answer */
+            function checkAnswer() {
+                /* compare player's answer with original from question bank */
+                let answer = this.value.toLowerCase() == bank.getCorrectAnswer().toString();
+
+                /* update result counters based on answer */
+                result.updateResult(answer); // update respective result variable
+
+                /* increase the progress bar value */
+                progressBar.value++;
+
+                /* increase question pointer of the question bank */
+                bank.nextQuestion();
+
+                /* check weather player attempted all the questions */
+                if (bank.isFinished()) {
+                    /* display game result */
+                    gameStates();
+
+                    /* record player and game result into local storage of the browser */
+                    saveData();
+
+                    statestics.style.display = "block"; // show game result
+                    restartButton.style.display = "block"; // enable game restart
+                    quizContainer.style.display = "none"; // hide quiz
+
+                    bank.reset(); // reset question pointer
+                    result.clear(); // reset result counters
+                } else {
+                    /* fetch next question from the question bank */
+                    questionLabel.innerHTML = bank.getQuestionText();
+                }
+            }
+
+            /* This function will display the quiz result */
+            function gameStates() {
+                /* modify colors with user's fav color */
+                statestics.style.borderColor = player.getColor();
+                restartButton.style.color = player.getColor();
+
+                /* display player's name and age */
+                nameLabel.innerHTML = player.getName();
+                ageLabel.innerHTML = player.getAge();
+
+                /* display player's true and fasle answer counters */
+                trueLabel.innerHTML = result.getTrueAnswers();
+                falseLabel.innerHTML = result.getFalseAnswers();
+
+                /* check if player's true answers is more then false answers, display content accordingly */
+                if (result.getResult()) {
+                    prizeIcon.innerHTML = "🏆";
+                    resultlabel.innerHTML = "Congratulations!!!";
+                } else {
+                    prizeIcon.innerHTML = "❌";
+                    resultlabel.innerHTML = "Better luck next time";
+                }
+            }
+
+            /* This function will saves the player detaila and game result into local storage */
+            function saveData() {
+                myStorage.setItem("NAME", player.getName());
+                myStorage.setItem("AGE", player.getAge());
+                myStorage.setItem("COLOR", player.getColor());
+                myStorage.setItem("TRUE", result.getTrueAnswers());
+                myStorage.setItem("FALSE", result.getFalseAnswers());
+            }
+
+            /* This function will try to retrieve the player's old records from the local storage (if-any) */
+            function getData() {
+                /* fill the form if the information is available in storage */
+                if (myStorage.getItem("NAME") !== null) {
+                    form["name"].value = myStorage.getItem("NAME");
+                    form["age"].value = myStorage.getItem("AGE");
+                    form["color"].value = myStorage.getItem("COLOR");
+                    lastRun.innerHTML = `Welcome back ${myStorage.getItem("NAME")}, Your last result as: ${myStorage.getItem("TRUE")} True, and ${myStorage.getItem("FALSE")} False.`;
+                    lastRun.style.display = "block"; // show last played label
+                }
+            }
+        }
+
+        /**
+         * This class will create a player instance with form details
+         * and provides methods to retrieve the player information.
+         *
+         * @class Player
+         */
+        class Player {
+            /**
+             * Creates an instance of Player.
+             *
+             * @param {string} name - name of the player
+             * @param {integer} age - age of the player
+             * @param {string} color - favourite color
+             * @memberof Player
+             */
+            constructor(name, age, color) {
+                this.name = name;
+                this.age = age;
+                this.color = color;
+            }
+
+            /**
+             * Get name of the player
+             *
+             * @return {string} - return name
+             * @memberof Player
+             */
+            getName = () => this.name;
+
+            /**
+             * Get age of the player
+             *
+             * @returns {integer} - return age
+             * @memberof Player
+             */
+            getAge = () => this.age;
+
+            /**
+             * Get fav color of the player
+             *
+             * @returns {string} - return color
+             * @memberof Player
+             */
+            getColor = () => this.color;
+        }
+
+        /**
+         * This class store the result of the game of current player
+         * It provides number of methods to modify the game result.
+         *
+         * @class Result
+         */
+        class Result {
+            /**
+             * Creates an instance of Result.
+             *
+             * @memberof Result
+             */
+            constructor() {
+                this.trueAnswers = 0;
+                this.falseAnswers = 0;
+            }
+
+            /**
+             * Get count of true answers
+             *
+             * @returns {integer} - return number of true answers
+             * @memberof Result
+             */
+            getTrueAnswers = () => this.trueAnswers;
+
+            /**
+             * Get count of false answers
+             *
+             * @returns {integer} - return number of false answers
+             * @memberof Result
+             */
+            getFalseAnswers = () => this.falseAnswers;
+
+            /**
+             * Update result counters
+             *
+             * @param {boolean} isTrue - player's answer
+             * @memberof Result
+             */
+            updateResult = isTrue => isTrue ? this.trueAnswers++ : this.falseAnswers++;
+
+            /**
+             * Get game result based on comparision of true and false answers
+             *
+             * @returns {boolean} - return weather player win or lose
+             * @memberof Result
+             */
+            getResult = () => this.trueAnswers > this.falseAnswers;
+
+            /**
+             * Clear the result counters to zero
+             *
+             * @memberof Result
+             */
+            clear = () => this.trueAnswers = this.falseAnswers = 0;
+        }
+
+        /**
+         * This class will create an instance a single question and its answer
+         *
+         * @class Question
+         */
+        class Question {
+            /**
+             * Creates an instance of Question.
+             *
+             * @param {string} text - question text
+             * @param {boolean} answer - question's answer
+             * @memberof Question
+             */
+            constructor(text, answer) {
+                this.questionText = text;
+                this.questionAnswer = answer;
+            }
+        }
+
+        /**
+         * This class create a list of questions with its answers
+         * and provides a set of method to retrieve questions
+         *
+         * @class QuestionBank
+         */
+        class QuestionBank {
+            /**
+             * Creates an instance of QuestionBank.
+             *
+             * @memberof QuestionBank
+             */
+            constructor() {
+                this.questionNumber = 0;
+                this.questionBank = [
+                    new Question("Some cats are actually allergic to humans", true), // 1
+                    new Question("You can lead a cow down stairs but not up stairs.", false), // 2
+                    new Question("Approximately one quarter of human bones are in the feet.", true), // 3
+                    new Question("A slug's blood is green.", true), // 4
+                    new Question("Buzz Aldrin's mother's maiden name was 'Moon'.", true), // 5
+                    new Question("It is illegal to pee in the Ocean in Portugal.", true), // 6
+                    new Question("No piece of square dry paper can be folded in half more than 7 times.", false), // 7
+                    new Question("In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.", true), // 8
+                    new Question("The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", false), // 9
+                    new Question("The total surface area of two human lungs is approximately 70 square metres.", true), // 10
+                    new Question("Google was originally called 'Backrub'.", true), // 11
+                    new Question("Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", true), // 12
+                    new Question("In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", true) // 13
+                ];
+            }
+
+            /**
+             * Get question text
+             *
+             * @returns {string} - return question text
+             * @memberof QuestionBank
+             */
+            getQuestionText = () => this.questionBank[this.questionNumber].questionText;
+
+            /**
+             * Get the original answer of the question
+             *
+             * @returns {boolean} - return question's answer
+             * @memberof QuestionBank
+             */
+            getCorrectAnswer = () => this.questionBank[this.questionNumber].questionAnswer;
+
+            /**
+             * Update question pointer if next question is available
+             *
+             * @memberof QuestionBank
+             */
+            nextQuestion = () => {
+                if (this.questionNumber < this.questionBank.length) this.questionNumber++;
+            }
+
+            /**
+             * Check if all questions are used from the list
+             *
+             * @returns {boolean} - return weather all questions are attemted
+             * @memberof QuestionBank
+             */
+            isFinished = () => this.questionNumber >= this.questionBank.length;
+
+            /**
+             * Reset question pointer to point first question
+             *
+             * @memberof QuestionBank
+             */
+            reset = () => this.questionNumber = 0;
+        }
+    </script>
+</body>
+
+</html>

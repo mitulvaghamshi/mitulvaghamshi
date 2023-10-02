@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>FUNBOOK</title>
+</head>
+
+<body>
+    <!-- app bar -->
+    <div class="app-bar">
+        <h1 class="title">FUNBOOK</h1>
+    </div>
+
+    <!-- main body content -->
+    <div class="main-content">
+        <!-- login screen -->
+        <div id="sign-in" class="signin-signup">
+            <!-- sign up button -->
+            <div class="panel">
+                <h3>Do not have an account with us?</h3>
+                <button class="btn" id="sign-up-btn">Sign up</button>
+            </div>
+
+            <!-- login form -->
+            <form action="#" id="form-sign-in">
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                    <input type="text" name="log-username" id="log-username" placeholder="Username" required />
+                </div>
+                <div class="input-field">
+                    <input type="password" name="log-password" id="log-password" placeholder="Password" required />
+                </div>
+                <input type="submit" id="log-submit-btn" value="Login" class="btn" />
+            </form>
+        </div>
+
+        <!-- sign up screen -->
+        <div id="sign-up" class="signin-signup">
+            <!-- sign up form -->
+            <form action="#" id="form-sign-up">
+                <h2 class="title">Sign up</h2>
+                <div class="input-field">
+                    <input type="text" name="reg-username" id="reg-username" placeholder="Username" required />
+                </div>
+                <div class="input-field">
+                    <input type="email" name="reg-email" id="reg-email" placeholder="Email" required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="i.e. email@example.com" />
+                </div>
+                <div class="input-field">
+                    <input type="password" name="reg-password" id="reg-password" placeholder="New Password" required
+                        pattern="(?=.*\W)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain a number, an uppercase, a lowercase, a special character, and at least 8 characters" />
+                </div>
+                <div class="input-field" id="cfmPass">
+                    <input type="password" id="reg-cfm-password" placeholder="Confirm Password" required
+                        onkeyup="confirmPass();" />
+                </div>
+                <div class="input-field">
+                    <input type="date" name="reg-dob" id="reg-dob" placeholder="Date of Birth" required />
+                </div>
+                <div class="input-field gender">
+                    <input type="range" name="reg-gender" id="reg-gender" min="0" max="2" step="1" />
+                    <div class="gender-label">
+                        <label onclick="setGender(0);">Male</label>
+                        <label onclick="setGender(1);">Unknown</label>
+                        <label onclick="setGender(2);">Female</label>
+                    </div>
+                </div>
+                <input type="submit" id="reg-submit-btn" value="Sign up" class="btn" />
+            </form>
+
+            <!-- sign in button -->
+            <div class="panel">
+                <h3>Already have an account?</h3>
+                <button class="btn" id="sign-in-btn">Sign in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- load jQuery library and other scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
