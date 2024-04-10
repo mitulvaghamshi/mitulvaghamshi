@@ -29,18 +29,19 @@ jobs:
           mv -f temp.html index.html
           cat policy.html | while read line; do echo -n $line >> temp.html; done;
           mv -f temp.html policy.html
-          cat dankawala/index.html
         working-directory: www
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5.0.0
+      - name: Test 1
         run: |
           cat dankawala/index.html
         working-directory: www
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.1
-        run: |
-          cat dankawala/index.html
-        working-directory: www
         id: deployment
         with:
           path: 'www'
+      - name: Test 2
+        run: |
+          cat dankawala/index.html
+        working-directory: www
