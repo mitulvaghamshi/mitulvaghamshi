@@ -32,10 +32,8 @@ jobs:
         working-directory: www
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5.0.0
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: 'www'
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.1
         id: deployment
+        with:
+          path: 'www'
