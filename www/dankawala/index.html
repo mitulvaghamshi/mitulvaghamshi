@@ -148,7 +148,6 @@
                 --padding: 14px;
                 --font-size: 1.6em;
                 --item-width: calc(100vw - 84px);
-                /* --item-width: calc(100vw - var(--padding)*6); */
             }
         }
 
@@ -174,21 +173,19 @@
 
 <body>
     <article>
+        <header>
+            <figure>
+                <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo.">
+            </figure>
+            <h1>ડંકાવાલા કાઠીયાવાડી</h1>
+            <h2>ગાર્ડન રેસ્ટોરન્ટ મેનુ</h2>
+        </header>
         <main>
-            <header>
-                <figure>
-                    <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo.">
-                </figure>
-                <h1>ડંકાવાલા કાઠીયાવાડી</h1>
-                <h2>ગાર્ડન રેસ્ટોરન્ટ મેનુ</h2>
-            </header>
             <article id="container"></article>
         </main>
         <footer>
             <p>ઓર્ડર અપ્યા પછી 15 - 20 મિનિટ રાહ જોવા વિનંતિ.</p>
-            <span>Copyright &copy;
-                <script>document.write(`${new Date().getFullYear()}`);</script>, Dankawala. All Rights Reserved.
-            </span>
+            <span>Copyright &copy; 2024, Dankawala. All Rights Reserved.</span>
         </footer>
     </article>
 </body>

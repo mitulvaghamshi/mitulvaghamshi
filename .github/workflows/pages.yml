@@ -21,27 +21,19 @@ jobs:
         uses: actions/checkout@v4.1.1
       - name: Minify
         run: |
-          cat dankawala/index.html | while read line; do echo -n $line >> dankawala/temp.html; done;
+          cat dankawala/index.html | while read line; do echo -n "$line" >> dankawala/temp.html; done;
           mv -f dankawala/temp.html dankawala/index.html
-          cat tailormade/index.html | while read line; do echo -n $line >> tailormade/temp.html; done;
+          cat tailormade/index.html | while read line; do echo -n "$line" >> tailormade/temp.html; done;
           mv -f tailormade/temp.html tailormade/index.html
-          cat index.html | while read line; do echo -n $line >> temp.html; done;
+          cat index.html | while read line; do echo -n "$line" >> temp.html; done;
           mv -f temp.html index.html
-          cat policy.html | while read line; do echo -n $line >> temp.html; done;
+          cat policy.html | while read line; do echo -n "$line" >> temp.html; done;
           mv -f temp.html policy.html
         working-directory: www
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5.0.0
-      - name: Test 1
-        run: |
-          cat dankawala/index.html
-        working-directory: www
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3.0.1
-        id: deployment
         with:
           path: 'www'
-      - name: Test 2
-        run: |
-          cat dankawala/index.html
-        working-directory: www
+        id: deployment
