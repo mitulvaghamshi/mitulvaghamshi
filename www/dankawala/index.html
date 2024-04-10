@@ -26,19 +26,19 @@
         :root {
             color-scheme: light dark;
             --display: flex;
-            --radius: 8px;
+            --radius: 50px;
             --padding: 20px;
             --font-size: 2em;
-            --min-width: 400px;
             --item-width: auto;
-            --primary-color: #FF644C;
-            --secondary-color: #219f69;
+            --table-width: 400px;
+            --primary: #FF644C;
+            --secondary: #219f69;
         }
 
         @media (prefers-color-scheme:dark) {
             :root {
-                --primary-color: #dc4d62;
-                --secondary-color: #49c690;
+                --primary: #dc4d62;
+                --secondary: #49c690;
             }
         }
 
@@ -48,25 +48,33 @@
             font-size: var(--font-size);
         }
 
-        main>figure {
-            text-align: center;
+        header {
+            margin: var(--padding);
+            padding-top: var(--padding);
+            padding-bottom: var(--padding);
+            border-radius: var(--radius);
+            outline: 2px dashed var(--secondary);
         }
 
-        figure>img {
+        header>figure>img {
             width: 70vw;
             border-radius: var(--radius);
         }
 
-        main>h1 {
-            margin: 0.3em;
-            color: var(--primary-color);
+        header>figure {
             text-align: center;
+        }
+
+        header>h1 {
+            margin: 0.3em;
+            text-align: center;
+            color: var(--primary);
             font-size: calc(var(--font-size) + 1.5em);
         }
 
-        main>h2 {
-            color: var(--secondary-color);
+        header>h2 {
             text-align: center;
+            color: var(--secondary);
         }
 
         main>article {
@@ -76,85 +84,86 @@
         }
 
         hr {
-            height: 8px;
+            height: 12px;
             border: none;
+            margin: var(--padding);
             border-radius: var(--radius);
-            outline: 1px solid var(--primary-color);
+            outline: 2px dashed var(--primary);
         }
 
         section>div {
-            padding: 5px;
             text-align: center;
             color: whitesmoke;
             margin: var(--padding);
+            padding: var(--padding);
             border-radius: var(--radius);
-            background-color: var(--primary-color);
+            background-color: var(--primary);
         }
 
         section>div:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--secondary);
         }
 
         table {
             margin: var(--padding);
             padding: var(--padding);
-            min-width: var(--min-width);
+            min-width: var(--table-width);
             border-radius: var(--radius);
+            outline: 1px solid var(--primary);
         }
 
         table:hover {
-            background-color: var(--secondary-color);
+            outline: none;
+            background-color: var(--secondary);
         }
 
         table>tr {
-            display: flex;
+            display: var(--display);
             width: var(--item-width);
             justify-content: space-between;
         }
 
         footer {
+            font-weight: bold;
             text-align: center;
+            margin: var(--padding);
+            padding: var(--padding);
+            border-radius: var(--radius);
+            outline: 2px dashed var(--secondary);
         }
 
         footer>p {
-            font-size: 0.7em;
-            font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary);
+            font-size: calc(var(--font-size) - 0.6em);
         }
 
         footer>span {
-            font-size: 0.5em;
-            font-weight: bold;
+            font-size: calc(var(--font-size) - 0.7em);
         }
 
-        @media only screen and (max-width:600px) {
+        @media(max-width:640px) {
             :root {
-                --display: flexbox;
-                --min-width: auto;
-                --font-size: 1.5em;
-                --padding: 20px;
+                --table-width: auto;
+                --radius: 30px;
+                --padding: 14px;
+                --font-size: 1.6em;
+                --item-width: calc(100vw - (var(--padding)* 6.0));
+            }
+        }
+
+        @media(max-width:460px) {
+            :root {
                 --radius: 20px;
-                --item-width: calc(100vw - var(--padding) * 6);
+                --padding: 12px;
+                --font-size: 1.3em;
             }
         }
 
-        @media only screen and (max-width:450px) {
+        @media(max-width:350px) {
             :root {
-                --display: flexbox;
-                --min-width: auto;
-                --font-size: 1.2em;
-                --padding: 16px;
-                --radius: 16px;
-            }
-        }
-
-        @media only screen and (max-width:320px) {
-            :root {
-                --display: flexbox;
-                --min-width: auto;
-                --font-size: 0.9em;
+                --radius: 12px;
                 --padding: 8px;
-                --radius: 8px;
+                --font-size: auto;
             }
         }
     </style>
@@ -163,23 +172,24 @@
 <body>
     <article>
         <main>
-            <figure>
-                <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo.">
-            </figure>
-            <h1>ડંકાવાલા કાઠીયાવાડી</h1>
-            <h2>ગાર્ડન રેસ્ટોરન્ટ મેનુ</h2>
-            <hr>
+            <header>
+                <figure>
+                    <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo.">
+                </figure>
+                <h1>ડંકાવાલા કાઠીયાવાડી</h1>
+                <h2>ગાર્ડન રેસ્ટોરન્ટ મેનુ</h2>
+            </header>
             <article id="container"></article>
         </main>
         <footer>
             <p>ઓર્ડર અપ્યા પછી 15 - 20 મિનિટ રાહ જોવા વિનંતિ.</p>
-            <hr>
             <span>Copyright &copy;
-                <script>document.write(`${new Date().getFullYear()},`);</script> All Rights Reserved - Dankawala.
+                <script>document.write(`${new Date().getFullYear()}`);</script>, Dankawala. All Rights Reserved.
             </span>
         </footer>
     </article>
 </body>
+
 <script>
     onload = () => {
         const menu = { "sections": [{ "name": "ચરોતરનો ચટપટો સ્વાદ", "items": [{ "name": "રોસ્ટેડ પાપડ", "price": "15" }, { "name": "ફ્રાય પાપડ", "price": "20" }, { "name": "મસાલા પાપડ", "price": "30" }, { "name": "ચીઝ મસાલા પાપડ", "price": "45" }, { "name": "છાસ", "price": "20" }, { "name": "ઘી-ગોળ", "price": "40" }] }, { "name": "ખીચડીનો ખજાનો", "items": [{ "name": "સાદી ખીચડી કઢી", "price": "70" }, { "name": "મસાલા ખીચડી કઢી", "price": "90" }, { "name": "ચીઝ ગાર્લીક ખીચડી", "price": "80" }, { "name": "પ્લેન રાઈસ", "price": "70" }, { "name": "જીરા રાઈસ", "price": "80" }, { "name": "દાલ ફ્રાય", "price": "70" }, { "name": "દાલ ફ્રાય તડકા", "price": "80" }] }, { "name": "જૈન વાનગીઓ", "items": [{ "name": "સેવ ટમેટા", "price": "75" }, { "name": "દહીં તીખારી", "price": "60" }, { "name": "મિક્સ વેજ", "price": "80" }, { "name": "કાજુ કારેલા", "price": "110" }, { "name": "પાપડ કારેલા", "price": "90" }, { "name": "કાજુ મસાલા", "price": "170" }, { "name": "ચીઝ બટર મસાલા", "price": "170" }, { "name": "પનીર લજાવાબ", "price": "140" }, { "name": "પ્લેન ખીચડી", "price": "40" }, { "name": "કઢી", "price": "30" }] }, { "name": "રોટલા રોટલી", "items": [{ "name": "સાદી રોટલી", "price": "8" }, { "name": "બટર રોટલી", "price": "10" }, { "name": "સાદો બાજરી રોટલો", "price": "25" }, { "name": "ઘી બાજરી રોટલો", "price": "30" }, { "name": "સાદો મકાઈ રોટલો", "price": "25" }, { "name": "ઘી મકાઈ રોટલો", "price": "30" }, { "name": "રોટલાનુ ચુરામુ", "price": "80" }, { "name": "વાઘરેલો ડ્રાય રોટલો", "price": "70" }, { "name": "વાઘરેલો ગ્રેવી રોટલો", "price": "80" }, { "name": "પરોઠા", "price": "20" }, { "name": "બટર પરોઠા", "price": "30" }] }, { "name": "પંજાબી તડકા", "items": [{ "name": "સ્પે. દાલ મખાની તડકા", "price": "110" }, { "name": "સ્પે. દાલ મખાની", "price": "100" }, { "name": "પનીર લજાવાબ", "price": "140" }, { "name": "ચીઝ બટર મસાલા", "price": "170" }, { "name": "પાલક પનીર", "price": "130" }, { "name": "ચીઝ પનીર બટર મસાલા", "price": "160" }, { "name": "પનીર તુફાની", "price": "160" }, { "name": "પનીર ટીક્કા મસાલા", "price": "160" }, { "name": "પનીર અંગારા", "price": "180" }, { "name": "પનીર હાંડી", "price": "170" }, { "name": "કાજુ મસાલા", "price": "170" }, { "name": "કાજુ કરી", "price": "160" }, { "name": "ડાંકાવાલા ગ્રીન & રેડ", "price": "200" }] }, { "name": "કાઠિયાવાડી કહુંબો", "items": [{ "name": "ભરેલા રીંગણ", "price": "80" }, { "name": "લસણીયા બટેકા", "price": "80" }, { "name": "સેવ ટમેટા", "price": "75" }, { "name": "મિક્સ વેજ", "price": "80" }, { "name": "દહીં તીખારી", "price": "60" }, { "name": "દેશી ચણામસાલા", "price": "80" }, { "name": "કાજુ ગાંઠિયા", "price": "120" }, { "name": "રીંગણ નુ ભરથુ", "price": "80" }, { "name": "કાજુ કારેલા", "price": "100" }, { "name": "પાપડ કારેલા", "price": "90" }, { "name": "સેવ લસણ", "price": "80" }, { "name": "લસણીયા મગ", "price": "80" }, { "name": "સેવ સીંગ ભજીયા", "price": "90" }, { "name": "કસ્તુરી બુંદી", "price": "80" }] }, { "name": "કાઠિયાવાડી કહુંબો (સીઝનલ)", "items": [{ "name": "તુવેર ઠોઠા", "price": "90" }, { "name": "લીલા ચણા", "price": "90" }, { "name": "લીલી હળદળ", "price": "150" }, { "name": "ગ્રીન સેવ લસણ", "price": "100" }, { "name": "મેથી લસણીયા બટાકા", "price": "90" }, { "name": "મેથી પાપડ", "price": "90" }, { "name": "તુવેર મેથી", "price": "90" }] }, { "name": "સ્પેશિયલ", "items": [{ "name": "ચીઝ મસાલા રોટલો", "price": "130" }] }] };
