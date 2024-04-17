@@ -2,43 +2,52 @@
 <html lang="en-US">
 
 <head>
-    <meta charSet="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charSet="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="author" content="Mitul Vaghamshi">
-    <meta name="description" content="Dankawala kathiyawadi garden restaurent menu.">
+    <meta name="description" content="Dankawala Kathiyawadi Garden Restaurent Menu">
+
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Menu - Dankawala Kathiyawadi Garden Restaurent">
     <meta property="og:url" content="https://mitulvaghamshi.github.io/mitulvaghamshi/dankawala/">
     <meta property="og:title" content="Menu - Dankawala Kathiyawadi Garden Restaurent">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-    <meta property="og:image:type" content="image/webp">
-    <meta property="og:image" content="https://mitulvaghamshi.github.io/icons/icon-192.webp">
-    <meta property="og:description" content="Dankawala kathiyawadi garden restaurent menu.">
+    <meta property="og:image:width" content="265">
+    <meta property="og:image:height" content="265">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="icon.png">
+    <meta property="og:description" content="Dankawala Kathiyawadi Garden Restaurent Menu">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Dankawala Menu">
-    <link rel="icon" type="image/webp" href="https://mitulvaghamshi.github.io/icons/icon-192.webp" />
-    <link rel="shortcut icon" type="image/webp" href="https://mitulvaghamshi.github.io/icons/icon-192.webp">
-    <link rel="apple-touch-icon" type="image/webp" href="https://mitulvaghamshi.github.io/icons/icon-192.webp">
-    <link href="https://mitulvaghamshi.github.io/mitulvaghamshi/dankawala/" rel="canonical" />
+    <link rel="apple-touch-icon" type="image/png" href="icon.png">
+
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="shortcut icon" type="image/png" href="icon.png">
+
+    <link href="https://mitulvaghamshi.github.io/mitulvaghamshi/dankawala/" rel="canonical">
+
     <style>
         :root {
             color-scheme: light dark;
+
             --display: flex;
-            --radius: 50px;
+            --radius: 30px;
             --padding: 20px;
             --font-size: 2em;
-            --item-width: auto;
             --table-width: 400px;
+
             --primary: #FF644C;
             --secondary: #219f69;
+            --background: #f4f5ff;
         }
 
         @media (prefers-color-scheme:dark) {
             :root {
                 --primary: #dc4d62;
                 --secondary: #49c690;
+                --background: #2b2b2b;
             }
         }
 
@@ -46,126 +55,113 @@
             margin: auto;
             padding: var(--padding);
             font-size: var(--font-size);
+            background-color: var(--background);
         }
 
-        header {
+        header,
+        footer {
+            text-align: center;
             margin: var(--padding);
-            padding-top: var(--padding);
-            padding-bottom: var(--padding);
+            padding: var(--padding);
             border-radius: var(--radius);
-            outline: 2px dashed var(--secondary);
+            outline: 2px solid var(--secondary);
         }
 
         header>figure>img {
-            width: 70vw;
-            border-radius: var(--radius);
-        }
-
-        header>figure {
-            text-align: center;
+            width: 60vw;
         }
 
         header>h1 {
             margin: 0.3em;
-            text-align: center;
             color: var(--primary);
-            font-size: calc(var(--font-size) + 1.5em);
+            font-size: calc(var(--font-size) + 1em);
         }
 
         header>h2 {
-            text-align: center;
             color: var(--secondary);
         }
 
         main>article {
             flex-wrap: wrap;
-            justify-content: center;
             display: var(--display);
+            justify-content: space-evenly;
         }
 
-        hr {
-            height: 12px;
-            border: none;
+        section {
             margin: var(--padding);
             border-radius: var(--radius);
-            outline: 2px dashed var(--primary);
+            outline: 2px solid var(--primary);
         }
 
         section>div {
             text-align: center;
             color: whitesmoke;
-            margin: var(--padding);
             padding: var(--padding);
-            border-radius: var(--radius);
+            border-radius: var(--radius) var(--radius) 0 0;
             background-color: var(--primary);
         }
 
-        section>div:hover {
-            background-color: var(--secondary);
+        section:hover {
+            border-radius: var(--radius) var(--radius) 0 0;
         }
 
         table {
-            margin: var(--padding);
             padding: var(--padding);
             min-width: var(--table-width);
-            border-radius: var(--radius);
-            outline: 1px solid var(--primary);
-        }
-
-        table:hover {
-            outline: none;
-            background-color: var(--secondary);
+            border-radius: 0 0 var(--radius) var(--radius);
         }
 
         table>tr {
-            display: var(--display);
-            width: var(--item-width);
             justify-content: space-between;
         }
 
-        footer {
-            font-weight: bold;
-            text-align: center;
-            margin: var(--padding);
-            padding: var(--padding);
-            border-radius: var(--radius);
-            outline: 2px dashed var(--secondary);
+        table>tr>td:nth-child(2) {
+            width: 80px;
         }
 
-        footer>p {
-            color: var(--primary);
-            font-size: calc(var(--font-size) - 0.6em);
+        footer {
+            font-size: 0.7em;
+            font-weight: bold;
+            text-align: center;
         }
 
         footer>span {
-            font-size: calc(var(--font-size) - 0.7em);
+            color: var(--primary);
         }
 
-        @media(max-width:640px) {
-            :root {
-                --table-width: auto;
-                --radius: 30px;
-                --padding: 14px;
-                --font-size: 1.6em;
-                --item-width: calc(100vw - 84px);
-            }
+        footer>p {
+            margin: var(--padding);
         }
 
-        @media(max-width:460px) {
+        @media(max-width:740px) {
             :root {
-                --radius: 20px;
                 --padding: 12px;
                 --font-size: 1.3em;
-                --item-width: calc(100vw - 72px);
+                --table-width: 300px;
+            }
+
+            table>tr>td:nth-child(2) {
+                width: 70px;
             }
         }
 
-        @media(max-width:350px) {
+        @media(max-width:678px) {
             :root {
-                --radius: 12px;
-                --padding: 8px;
+                --font-size: 1.6em;
+                --table-width: calc(90vw - var(--padding));
+            }
+        }
+
+        @media(max-width:420px) {
+            :root {
+                --font-size: 1.3em;
+            }
+        }
+
+        @media(max-width:320px) {
+            :root {
                 --font-size: auto;
-                --item-width: calc(100vw - 48px);
+                --item-width: auto;
             }
         }
     </style>
@@ -175,7 +171,7 @@
     <article>
         <header>
             <figure>
-                <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo.">
+                <img id="logo" src="logo.webp" type="image/webp" loading="lazy" alt="Dankawala Kathiyawadi Restaurent logo">
             </figure>
             <h1>ડંકાવાલા કાઠીયાવાડી</h1>
             <h2>ગાર્ડન રેસ્ટોરન્ટ મેનુ</h2>
@@ -184,8 +180,8 @@
             <article id="container"></article>
         </main>
         <footer>
-            <p>ઓર્ડર અપ્યા પછી 15 - 20 મિનિટ રાહ જોવા વિનંતિ.</p>
-            <span>Copyright &copy; 2024, Dankawala. All Rights Reserved.</span>
+            <span>ઓર્ડર અપ્યા પછી 15 - 20 મિનિટ રાહ જોવા વિનંતિ.</span>
+            <p>Copyright &copy; 2024, Dankawala. All Rights Reserved.</p>
         </footer>
     </article>
 </body>
