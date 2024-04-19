@@ -3,7 +3,7 @@
  * method to track the time required to finish all the customers on this line.
  *
  * @param <T> type of the element utilizing this generic class.
-</T> */
+ */
 class CheckoutLine<T> {
     /**
      * Get the current checkout queue.

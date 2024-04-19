@@ -4,6 +4,8 @@
 /* databse access instance */
 $dbh = require "connection/getPDO.php";
 
+// if (!isset($_POST["submit"])) header("Location: ../index.php");
+
 /* retrieve login parameters */
 $username = filter_input(INPUT_POST, "log-username", FILTER_SANITIZE_SPECIAL_CHARS);
 $password = filter_input(INPUT_POST, "log-password", FILTER_SANITIZE_SPECIAL_CHARS);

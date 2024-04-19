@@ -86,144 +86,182 @@
        empopacity="0.4"
        empspacing="5" />
   </sodipodi:namedview>
-  <style
-     id="style5"
-     type="text/css">
-		/*	Diagonals are '#diag-1XY' (ID)
-			where XY are the first two digits of the fractional decimal part of the ratio,
-			e.g. 16/9 = 1,777... =&gt; '#diag-178'.
-			There are also classes build the same way, but with 'rect' prefix,
-			e.g. 5/3 = 1.6 =&gt; '.rect-160'.
-			Rectangles are '#rect-ABCDxWXYZ' (ID)
-			where ABCD and WXYZ are the horizontal and vertical resolution in pixels respectively,
-			e.g. 1920 * 1080 =&gt; '#rect-1920x1080'.
-			Labels have the classes '.label' and either of '.resolution', '.name' or '.ratio'.
-		*/
-		/* 5:4, 15:12 */
-		.rect-125, .stroke-125, #path-125
-		{
-			stroke: #c4a000; /* yellow */
-		}
-		/* 4:3, 16:12, 12:9 */
-		.rect-133, .stroke-133, #path-133
-		{
-			stroke: #a40000; /* red */
-		}
-		/* 3:2, 15:10 */
-		.rect-150, .stroke-150, #path-150
-		{
-			stroke: #4e9a06; /* green */
-		}
-		/* 8:5, 16:10 */
-		.rect-160, .stroke-160, #path-160
-		{
-			stroke: #5c3566; /* purple */
-		}
-		/* 5:3, 15:9 */
-		.rect-167, .stroke-167, #path-167
-		{
-			stroke: #ce5c00; /* orange */
-		}
-		/* 16:9 */
-		.rect-178, .stroke-178, #path-178
-		{
-			stroke: #204a87; /* blue */
-		}
-		/* 17:9 */
-		.rect-189, .stroke-189, #path-189
-		{
-			stroke: #8f5902; /* light brown */
-		}
+  <style id="style5" type="text/css">
+/*
+Diagonals are '#diag-1XY' (ID)
+where XY are the first two digits of the fractional decimal part of the ratio,
+e.g. 16/9 = 1,777... => '#diag-178'.
 
-		.rect-125, .rect-133, .rect-150, .rect-160, .rect-167, .rect-178, .rect-189
-		{
-			fill: none;
-			stroke-width: 2;
-		}
+There are also classes build the same way, but with 'rect' prefix,
+e.g. 5/3 = 1.6 => '.rect-160'.
 
-		.fill-125, #path-125
-		{
-			fill: #fce94f;
-		}
-		.fill-133, #path-133
-		{
-			fill: #ef2929;
-		}
-		.fill-150, #path-150
-		{
-			fill: #8ae234;
-		}
-		.fill-160, #path-160
-		{
-			fill: #ad7fa8;
-		}
-		.fill-167, #path-167
-		{
-			fill: #fcaf3e;
-		}
-		.fill-178, #path-178
-		{
-			fill: #729fcf;
-		}
-		.fill-189, #path-189
-		{
-			fill: #e9b96e;
-		}
+Rectangles are '#rect-ABCDxWXYZ' (ID)
+where ABCD and WXYZ are the horizontal and vertical resolution in pixels respectively,
+e.g. 1920 * 1080 => '#rect-1920x1080'.
 
-		#path-125, #path-133, #path-150, #path-160, #path-167, #path-178, #path-189
-		{
-			fill-opacity: 1;
-			stroke-width: 6;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-			stroke-miterlimit: 4;
-			stroke-dasharray: none;
-			stroke-opacity: 1;
-		}
+Labels have the classes '.label' and either of '.resolution', '.name' or '.ratio'.
+*/
 
-		.resolution
-		{
-			font-size: 32px;
-		}
-		.name
-		{
-/*			font-size: &gt; 40px;*/
-		}
-		.note
-		{
-			font-size: 20px;
-		}
-		.ratio
-		{
-			font-size: 40px;
-		}
-		#labels
-		{
-			font-size: 56px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: normal;
-			font-stretch: normal;
-			text-align: center;
-			line-height: 100%;
-			writing-mode: lr-tb;
-			text-anchor: middle;
-			display: inline;
-			font-family: &quot;Bitstream Vera Sans&quot;, sans-serif;
-		}
-		#circles circle
-		{
-			fill: navy;
-			opacity: 0.08;
-			stroke: none;
-			z-index: 5;
-		}
-		#background rect
-		{
-			fill: white;
-			opacity: 1;
-			stroke: none;
-		}
+/* 5:4, 15:12 */
+.rect-125,
+.stroke-125,
+#path-125 {
+	stroke: #c4a000;
+	/* yellow */
+}
+
+/* 4:3, 16:12, 12:9 */
+.rect-133,
+.stroke-133,
+#path-133 {
+	stroke: #a40000;
+	/* red */
+}
+
+/* 3:2, 15:10 */
+.rect-150,
+.stroke-150,
+#path-150 {
+	stroke: #4e9a06;
+	/* green */
+}
+
+/* 8:5, 16:10 */
+.rect-160,
+.stroke-160,
+#path-160 {
+	stroke: #5c3566;
+	/* purple */
+}
+
+/* 5:3, 15:9 */
+.rect-167,
+.stroke-167,
+#path-167 {
+	stroke: #ce5c00;
+	/* orange */
+}
+
+/* 16:9 */
+.rect-178,
+.stroke-178,
+#path-178 {
+	stroke: #204a87;
+	/* blue */
+}
+
+/* 17:9 */
+.rect-189,
+.stroke-189,
+#path-189 {
+	stroke: #8f5902;
+	/* light brown */
+}
+
+.rect-125,
+.rect-133,
+.rect-150,
+.rect-160,
+.rect-167,
+.rect-178,
+.rect-189 {
+	fill: none;
+	stroke-width: 2;
+}
+
+.fill-125,
+#path-125 {
+	fill: #fce94f;
+}
+
+.fill-133,
+#path-133 {
+	fill: #ef2929;
+}
+
+.fill-150,
+#path-150 {
+	fill: #8ae234;
+}
+
+.fill-160,
+#path-160 {
+	fill: #ad7fa8;
+}
+
+.fill-167,
+#path-167 {
+	fill: #fcaf3e;
+}
+
+.fill-178,
+#path-178 {
+	fill: #729fcf;
+}
+
+.fill-189,
+#path-189 {
+	fill: #e9b96e;
+}
+
+#path-125,
+#path-133,
+#path-150,
+#path-160,
+#path-167,
+#path-178,
+#path-189 {
+	fill-opacity: 1;
+	stroke-width: 6;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-miterlimit: 4;
+	stroke-dasharray: none;
+	stroke-opacity: 1;
+}
+
+.resolution {
+	font-size: 32px;
+}
+
+.name {
+	/* font-size: &gt; 40px; */
+}
+
+.note {
+	font-size: 20px;
+}
+
+.ratio {
+	font-size: 40px;
+}
+
+#labels {
+	font-size: 56px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-stretch: normal;
+	text-align: center;
+	line-height: 100%;
+	writing-mode: lr-tb;
+	text-anchor: middle;
+	display: inline;
+	font-family: "Bitstream Vera Sans", sans-serif;
+}
+
+#circles circle {
+	fill: navy;
+	opacity: 0.08;
+	stroke: none;
+	z-index: 5;
+}
+
+#background rect {
+	fill: white;
+	opacity: 1;
+	stroke: none;
+}
 	</style>
   <defs
      id="defs4">

@@ -1,17 +1,20 @@
 <?php session_start();
+
 $xValid = false;
 $xUser = "Guest";
+
 if (isset($_SESSION['xUser'])) {
     $now = time();
     if ($now > $_SESSION['expire']) {
         session_destroy();
     } else {
-        $_SESSION['expire'] = time() + (30 * 60); // 30 min
+        $_SESSION['expire'] = time() + (10 * 60); // 10 min
         $xUser = $_SESSION["xUser"];
         $xValid = true;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -76,7 +79,7 @@ if (isset($_SESSION['xUser'])) {
     <?php } ?>
 
     <!-- load jQuery library and other scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/home.js"></script>
 </body>
 

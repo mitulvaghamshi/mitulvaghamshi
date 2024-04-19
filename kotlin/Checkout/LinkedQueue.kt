@@ -3,7 +3,7 @@ class LinkedQueue<E> {
      * Node class to be used by the LinkedQueue class
      *
      * @param <E>
-    </E> */
+     */
     private class Node<E>(var value: E, var next: Node<E>?)
 
     private var count: Int

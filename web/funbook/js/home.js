@@ -7,6 +7,9 @@ const postImgBtn = $("#post-img-btn").click(addNewImage);
 
 // login register forms screens
 const logoutBtn = $("#logout").click(() => {
+  // await fetch(`./script.php?p1=${v1}&p2=${v2}`, {
+  //   credentials: "include"
+  // }).then((e) => start());
   fetch("./php/logout.php", { credentials: "include" })
     .then((res) => res.json()).then((res) => {
       if (parseInt(res) === 0) {

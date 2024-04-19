@@ -29,15 +29,6 @@ References:
             margin: auto;
             padding: 16px;
             text-align: center;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        hr {
-            height: 5px;
-            margin-top: 16px;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            background-color: gray;
         }
 
         input,
@@ -45,10 +36,9 @@ References:
         select {
             border: none;
             min-width: 300px;
-            font-size: large;
-            border-radius: 16px;
+            border-radius: 8px;
+            outline: 1px solid;
             vertical-align: middle;
-            outline: 2px solid gray;
         }
 
         input,
@@ -56,46 +46,37 @@ References:
         button,
         select {
             display: block;
-            padding: 12px;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            padding: 8px;
+            margin: 5px;
         }
 
         label {
-            padding: 0px;
-            font-weight: bold;
-            font-size: 1.3rem;
+            padding: 0;
             text-align: start;
         }
 
         button {
             width: 330px;
-            font-size: 1.5rem;
-            font-weight: bolder;
-            color: aliceblue;
-            background-color: coral;
+            color: white;
+            background-color: #4169e1;
         }
 
         button:hover {
-            background-color: royalblue;
             cursor: pointer;
+            background-color: #7daaff;
         }
 
         select {
-            width: 330px;
+            width: 320px;
         }
 
         input[type="text"] {
-            background-color: gainsboro;
-        }
-
-        input::placeholder {
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #dcdcdc;
         }
 
         #container {
-            width: max-content;
             margin: auto;
+            width: max-content;
             text-align: center;
         }
 
@@ -111,7 +92,7 @@ References:
             button,
             select {
                 width: auto;
-                min-width: 275px;
+                min-width: 265px;
             }
         }
 
@@ -128,7 +109,7 @@ References:
 
             button,
             select {
-                width: 530px;
+                width: 520px;
                 display: inline-block;
             }
 
@@ -158,7 +139,6 @@ References:
                 width: 700px;
             }
         }
-
     </style>
 </head>
 
@@ -169,21 +149,17 @@ References:
         <form action="#" name="salary-form">
             <!-- Take gross salary from user. -->
             <label for="input-salary">What is your gross salary:</label>
-            <input id="input-salary" id="input-salary" name="input-salary" type="number"
-                placeholder="Enter gross salary (required)" required pattern="\d+\.?\d+?" />
+            <input id="input-salary" id="input-salary" name="input-salary" type="number" placeholder="Enter gross salary (required)" required pattern="\d+\.?\d+?" />
 
             <!-- Not in use. -->
             <label for="input-weeks">Number of weeks (<span id="weeks">52</span>):</label>
-            <input id="input-weeks" name="input-weeks" type="range" min="1" max="52" step="1" value="52"
-                oninput="weeks.innerText=this.value" />
+            <input id="input-weeks" name="input-weeks" type="range" min="1" max="52" step="1" value="52" oninput="weeks.innerText=this.value" />
 
             <!-- Add Bonus and Allowance in dollars from users. -->
             <label for="input-bonus">Enter bonus received:</label>
-            <input id="input-bonus" name="input-bonus" type="number" required
-                placeholder="Enter bonus amount (required)" pattern="\d+\.?\d+?" />
+            <input id="input-bonus" name="input-bonus" type="number" required placeholder="Enter bonus amount (required)" pattern="\d+\.?\d+?" />
             <label for="input-allowance">How much allowance:</label>
-            <input id="input-allowance" name="input-allowance" type="number" required
-                placeholder="Enter allowance (required)" pattern="\d+\.?\d+?" />
+            <input id="input-allowance" name="input-allowance" type="number" required placeholder="Enter allowance (required)" pattern="\d+\.?\d+?" />
 
             <!-- Apply deductions as EI, CPP and IncomeTex as percentages. -->
             <label for="input-tax">Total tax (fed + prov):</label>
@@ -195,8 +171,7 @@ References:
 
             <!-- salary after tax -->
             <label for="input-salary-after-tax">Salary after tax: </label>
-            <input id="input-salary-after-tax" name="input-salary-after-tax" type="text" readonly
-                placeholder="Salary after tax" />
+            <input id="input-salary-after-tax" name="input-salary-after-tax" type="text" readonly placeholder="Salary after tax" />
 
             <!-- Apply deduction of 1% IncomeTex for female only. -->
             <label for="input-gender">Select your gender:</label>

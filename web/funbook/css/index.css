@@ -20,6 +20,7 @@ input {
     margin-bottom: 10px;
     box-shadow: 10px black;
     background-color: #3e85ff;
+    /* background-image: linear-gradient(to right, #A905C5, #B305E3, #A704DB, #5c007e, #240033); */
 }
 
 /* placeholder image width */

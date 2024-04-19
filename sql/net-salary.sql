@@ -1,9 +1,9 @@
 /*****************************************************************
- * Script: CalculateNetSalary.sql
- * Author: Mitul Vaghamshi
- * Date: Mar 29, 2023
+ * Script: 		CalculateNetSalary.sql
+ * Author: 		Mitul Vaghamshi
+ * Date: 		Mar 29, 2023
  * Description: Calculate net salary by deducting all taxes,
- * insurances, contributions and applying benefits.
+ * 				insurances, contributions and applying benefits.
 *****************************************************************/
 
 -- SAMPLE OUTPUT
@@ -33,24 +33,24 @@ emp_id      emp_name     emp_email              emp_password  emp_gender      no
 2212        Nattaly Hill natilli@yahoo.com      NULL          Female          3              180.00     0.28   0.05   0.03  78500.00
 ***************************************************************************************************************************************/
 
--- REMOVE {APP_DB} DATABASE IF ALREADY EXISTS
-IF EXISTS (SELECT * FROM sysdatabases WHERE name = 'APP_DB')
-  DROP DATABASE APP_DB;
+-- REMOVE {SALARY_DB} DATABASE IF ALREADY EXISTS
+IF EXISTS (SELECT * FROM sysdatabases WHERE name = 'SALARY_DB')
+  DROP DATABASE SALARY_DB;
 GO
 
--- CREATE THE {APP_DB} DATABASE
-CREATE DATABASE APP_DB;
+-- CREATE THE {SALARY_DB} DATABASE
+CREATE DATABASE SALARY_DB;
 GO
 
--- MAKE THE {APP_DB} THE CURRENT DATABASE
-USE APP_DB;
+-- MAKE THE {SALARY_DB} THE ACTIVE DATABASE
+USE SALARY_DB;
 GO
 
 -- CREATE {tblEmployee} TABLE
 EXECUTE [dbo].[SP_Create_Employee_Table];
 GO
 
--- FUNCTION TO CALCULATE NET INCOME FROM GROSS INCOME
+-- FUNCTION TO CALCULATE NET INCOME FROM GROSS INCOME (Formula: 2023)
 -- @PARAM	{MONEY} @gross_salary	- TOTAL OF ALL INCOMES
 -- @PARAM	{FLOAT} @itex			- INCOME-TAX PERCENTAGE
 -- @PARAM	{FLOAT} @cpp			- CPP PERCENTAGE
@@ -175,7 +175,8 @@ CREATE OR ALTER FUNCTION dbo.FN_Calculate (
 	DECLARE @after_tax_income MONEY = @gross_salary - @total_tax;
 
 	-- POPULATE RETURNABLE TABLE
-	INSERT @result SELECT @total_tax, @payroll_deductions, @ei_premiums, @after_tax_income;
+	INSERT @result
+	SELECT @total_tax, @payroll_deductions, @ei_premiums, @after_tax_income;
 
 	RETURN;
 END
@@ -185,8 +186,11 @@ GO
 -- @PARAM	{MONEY} @value1 FIRST NUMBER
 -- @PARAM	{MONEY} @value2 SECOND NUMBER
 -- @RETURN	{MONEY} MAXIMUM OF TWO GIVEN NUMBERS
-CREATE OR ALTER FUNCTION dbo.Find_Max (@value1 MONEY, @value2 MONEY)
-RETURNS MONEY AS BEGIN
+CREATE OR ALTER FUNCTION dbo.Find_Max (
+	@value1 MONEY,
+	@value2 MONEY
+) RETURNS MONEY
+AS BEGIN
 	IF @value1 >= @value2
 		RETURN @value1;
 	RETURN @value2;
@@ -197,8 +201,11 @@ GO
 -- @PARAM	{MONEY} @value1 FIRST NUMBER
 -- @PARAM	{MONEY} @value2 SECOND NUMBER
 -- @RETURN	{MONEY} MINIMUM OF TWO GIVEN NUMBERS
-CREATE OR ALTER FUNCTION dbo.Find_Min (@value1 MONEY, @value2 MONEY)
-RETURNS MONEY AS BEGIN
+CREATE OR ALTER FUNCTION dbo.Find_Min (
+	@value1 MONEY,
+	@value2 MONEY
+) RETURNS MONEY
+AS BEGIN
 	IF @value1 <= @value2
 		RETURN @value1;
 	RETURN @value2;
@@ -206,18 +213,31 @@ END
 GO
 
 -- CREATE ONCE {#TempTable}
-IF NOT EXISTS(SELECT [name] FROM [tempdb].[sys].[tables] WHERE [name] LIKE '#TempTable%') BEGIN
+IF NOT EXISTS(
+	SELECT [name]
+	FROM [tempdb].[sys].[tables]
+	WHERE [name] LIKE '#TempTable%'
+) BEGIN
 	-- CREATE TEMPORARY TABLE TO TRACK INDIVIDUAL RECORDS OF EMPLOYEE TABLE
 	-- THE GENERATED IDENTITY {key} IS USED TO FETCH ACTUAL ROW FROM EMPLOYEE TABLE
-	CREATE TABLE #TempTable (e_id INT IDENTITY(1, 1), emp_id INT);
+	CREATE TABLE #TempTable (
+		e_id INT IDENTITY(1, 1),
+		emp_id INT
+	);
 
 	-- POPULATE TABLE WITH {emp_id} OF SOURCE TABLE AND GENERATED {key} FROM IDENTITY
-	INSERT INTO #TempTable(emp_id) SELECT dbo.tblEmployee.emp_id FROM dbo.tblEmployee;
+	INSERT INTO #TempTable(emp_id)
+	SELECT dbo.tblEmployee.emp_id
+	FROM dbo.tblEmployee;
 END
 GO
 
 -- CREATE ONCE {#ResultSet}
-IF NOT EXISTS(SELECT [name] FROM [tempdb].[sys].[tables] WHERE [name] LIKE '#ResultSet%') BEGIN
+IF NOT EXISTS(
+	SELECT [name]
+	FROM [tempdb].[sys].[tables]
+	WHERE [name] LIKE '#ResultSet%'
+) BEGIN
 	-- TEMPORARY TABLE TO HOLD DISPLAYABLE CALCULATIONS
 	CREATE TABLE #ResultSet (
 		[EMPLOYEE NAME]				CHAR(100),
@@ -233,33 +253,41 @@ END
 GO
 
 -- A POINTER TO CUTTENT TABLE ROW
-DECLARE @COUNT INT; SELECT TOP(1) @COUNT = e_id FROM #TempTable;
+DECLARE @COUNT INT;
+SELECT TOP(1) @COUNT = e_id
+FROM #TempTable;
 
 -- MAXIMUM NUMBER OF ROWS IN {#TempTable}, SO IN {dbo.tblEmployee}
-DECLARE @MAX INT; SELECT @MAX = COUNT(0) FROM #TempTable;
+DECLARE @MAX INT;
+SELECT @MAX = COUNT(0)
+FROM #TempTable;
 
 -- HOLD DATA FROM {tblEmployee} TABLE FOR EACH ROW
-DECLARE @gender_relief TINYINT;
-DECLARE @deps_relief TINYINT;
-DECLARE @gross_salary MONEY;
+DECLARE @gender_relief 	TINYINT;
+DECLARE @deps_relief 	TINYINT;
+DECLARE @gross_salary 	MONEY;
 
 -- HOLD CALCULATION DATA FROM {FN_Calculate} FUNCTION
-DECLARE	@tax MONEY;
-DECLARE	@cpp MONEY;
-DECLARE	@ei MONEY;
+DECLARE	@tax 	MONEY;
+DECLARE	@cpp 	MONEY;
+DECLARE	@ei 	MONEY;
 DECLARE	@salary MONEY;
 
 -- ITERATE UNTILL ALL ROWS PROCESSED
-WHILE @COUNT <= @MAX BEGIN
+WHILE @COUNT <= @MAX
+BEGIN
 	-- FETCH AND STORE ACTUAL {emp_id} USING {#TempTable} REFERENCE
 	DECLARE @emp_id INT;
-	SELECT  @emp_id = emp_id FROM #TempTable WHERE e_id = @COUNT;
+	SELECT  @emp_id = emp_id
+	FROM #TempTable
+	WHERE e_id = @COUNT;
 
 	-- FETCH AND IDENTIFY PARAMETER VALUES TO BE USED FOR CALCULATION
 	SELECT	@gross_salary	= GrossSalary + Additions,
 			@gender_relief	= (CASE emp_gender WHEN 'Male' THEN 0 ELSE 1 END),
 			@deps_relief	= (CASE WHEN noOfDependants <= 2 THEN 0 WHEN noOfDependants = 3 THEN 2 ELSE 4 END)
-	FROM dbo.tblEmployee WHERE emp_id = @emp_id;
+	FROM dbo.tblEmployee
+	WHERE emp_id = @emp_id;
 
 	-- HOLD CALCULATED RESULT OF {FN_Calculate} FUNCTION: TAX, CPP, EI, AND SALARY
 	SELECT
@@ -276,16 +304,10 @@ WHILE @COUNT <= @MAX BEGIN
 	SET @salary *= (1 + @deps_relief / 100.0);
 
 	-- STORE ALL DATA INTO {#ResultSet} TABLE
-	INSERT #ResultSet SELECT
-		emp_name,
-		emp_gender,
-		noOfDependants,
-		@gross_salary,
-		@tax,
-		@cpp,
-		@ei,
-		@salary
-	FROM dbo.tblEmployee WHERE emp_id = @emp_id;
+	INSERT #ResultSet
+	SELECT emp_name, emp_gender, noOfDependants, @gross_salary, @tax, @cpp, @ei, @salary
+	FROM dbo.tblEmployee
+	WHERE emp_id = @emp_id;
 
 	-- POINT TO NEXT ROW
 	SET @COUNT += 1;
@@ -301,18 +323,27 @@ TRUNCATE TABLE #ResultSet;
 GO
 
 -- DISPOSE EVERYTHING GENERATED BY THIS SCRIPT (Find_Max, Find_Min, FN_Calculate, #TempTable, #ResultSet)
--- CHANGE TO FALSY CONDITION TO DESABLE CLEANUP...
-IF 1 = 1 BEGIN
-	DROP FUNCTION IF EXISTS dbo.Find_Min;
-	DROP FUNCTION IF EXISTS dbo.Find_Max;
-	DROP FUNCTION IF EXISTS dbo.FN_Calculate;
-	DROP PROCEDURE IF EXISTS dbo.SP_Create_Employee_Table; -- OPTIONAL
-	IF EXISTS(SELECT [name] FROM [tempdb].[sys].[tables] WHERE [name] LIKE '#TempTable%') BEGIN
-		DROP TABLE #TempTable;
-	END
-	IF EXISTS(SELECT [name] FROM [tempdb].[sys].[tables] WHERE [name] LIKE '#ResultSet%') BEGIN
-		DROP TABLE #ResultSet;
-	END
+-- CHANGE TO FALSELY CONDITION TO DISABLE CLEANUP...
+IF 1 = 1
+BEGIN
+	DROP FUNCTION  IF EXISTS dbo.Find_Min;
+	DROP FUNCTION  IF EXISTS dbo.Find_Max;
+	DROP FUNCTION  IF EXISTS dbo.FN_Calculate;
+
+	-- OPTIONAL
+	DROP PROCEDURE IF EXISTS dbo.SP_Create_Employee_Table;
+
+	IF EXISTS(
+		SELECT [name]
+		FROM [tempdb].[sys].[tables]
+		WHERE [name] LIKE '#TempTable%'
+	) DROP TABLE #TempTable;
+
+	IF EXISTS(
+		SELECT [name]
+		FROM [tempdb].[sys].[tables]
+		WHERE [name] LIKE '#ResultSet%'
+	) DROP TABLE #ResultSet;
 END
 
 -- EXECUTE TO RE-CREATE {tblEmployee}
@@ -338,7 +369,8 @@ CREATE TABLE [dbo].[tblEmployee](
 	[CPP] 				[decimal](3, 2) 		NULL,
 	[EI] 				[decimal](3, 2) 		NULL,
 	[GrossSalary] 		[money] 				NULL,
-	PRIMARY KEY CLUSTERED ([emp_id] ASC) WITH (
+	PRIMARY KEY CLUSTERED ([emp_id] ASC)
+	WITH (
 		PAD_INDEX 					= OFF,
 		STATISTICS_NORECOMPUTE 		= OFF,
 		IGNORE_DUP_KEY 				= OFF,
@@ -357,7 +389,7 @@ INSERT [dbo].[tblEmployee]
 VALUES
 (2, 		N'Karry', 			N'KKhall@yahoo.com', 		NULL, 			N'Male', 		4, 					325.0000, 		CAST(0.21 AS Decimal(3, 2)), 	CAST(0.07 AS Decimal(3, 2)), 	CAST(0.05 AS Decimal(3, 2)), 	81000.0000),
 (1148, 		N'Sujawal', 		N'sujawalfff@yahoo.com', 	NULL, 			N'Female', 		1, 					650.0000, 		CAST(0.25 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	CAST(0.03 AS Decimal(3, 2)), 	77000.0000),
-(2200, 		N'Allana', 			N'Allana@gmail.com', 		NULL, 			N'Female', 		3, 					280.0000, 		CAST(0.28 AS Decimal(3, 2)), 	CAST(0.05 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	120000.0000),
+(2200, 		N'Allana', 			N'Allana@gmail.com', 		NULL, 			N'Female', 		3, 					280.0000, 		CAST(0.28 AS Decimal(3, 2)), 	CAST(0.05 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	12000.0000),
 (2204, 		N'John', 			N'jadde@yahoo.com', 		NULL, 			N'Male', 		2, 					180.0000, 		CAST(0.28 AS Decimal(3, 2)), 	CAST(0.24 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	55000.0000),
 (2205, 		N'Sally', 			N'salley@yahoo.com', 		NULL, 			N'Female', 		3, 					250.0000, 		CAST(0.28 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	CAST(0.05 AS Decimal(3, 2)), 	58000.0000),
 (2207, 		N'Jane', 			N'jane@yahoo.com', 			NULL, 			N'Male', 		4, 					150.0000, 		CAST(0.05 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	CAST(0.04 AS Decimal(3, 2)), 	79000.0000),

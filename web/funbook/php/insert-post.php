@@ -1,6 +1,9 @@
 <?php session_start();
 /* insert new post (image, thoughts) to the database */
 
+// Set timezone to America/Toronto, GMT -04:00.
+// date_default_timezone_set("America/Toronto");
+
 /* database hander instance */
 $dbh = require "connection/getPDO.php";
 

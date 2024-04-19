@@ -48,9 +48,10 @@
     </main>
     <script>
         onload = () => {
-            // Generate 250 stars for the night effect
+            // Generate stars for the night effect
+            const xmlNS = 'http://www.w3.org/2000/svg'
             for (i = 0; i < 500; i++) {
-                const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                const dot = document.createElementNS(xmlNS, 'circle');
                 dot.setAttribute('id', `circle-${i}`);
                 dot.setAttribute('style', 'fill:var(--font-color)');
                 dot.setAttribute('r', Math.random());
