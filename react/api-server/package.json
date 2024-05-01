@@ -4,7 +4,7 @@
   "description": "API Server (Workouts).",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "src/index.js"
   },
   "dependencies": {
     "apicache": "^1.6.3",
@@ -13,8 +13,5 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
     "uuid": "^9.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
   }
 }
