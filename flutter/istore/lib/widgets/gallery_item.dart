@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:istore/models/app_state.dart';
 import 'package:istore/models/product.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 @immutable
@@ -20,10 +20,8 @@ class GalleryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<AppState>(
-      context,
-      listen: false,
-    ).getProductBy(index);
+    final product = Provider.of<AppState>(context, listen: false) //
+        .getProductBy(index);
     final cardLeft = constraints.maxWidth - constraints.maxHeight * 12.0 / 18.0;
     final delta = index + 1 - currentCard;
     return Positioned.directional(
@@ -47,12 +45,13 @@ class GalleryItem extends StatelessWidget {
                 alignment: Alignment.center,
                 constraints: const BoxConstraints.expand(height: 40),
                 decoration: BoxDecoration(
-                    color: CupertinoTheme.of(context).barBackgroundColor),
+                  color: CupertinoTheme.of(context).barBackgroundColor,
+                ),
                 child: Text(
                   product.name,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w500,
                     fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

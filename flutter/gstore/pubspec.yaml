@@ -13,13 +13,13 @@ dependencies:
   cupertino_icons: ^1.0.4
 
 dev_dependencies:
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
   assets:
-  - assets/nest.png
-  - assets/pixels.png
-  - assets/google-logo.png
-  - assets/nest-home-packages.png
-  - assets/nest-audio-packages.png
+  - assets/nest.webp
+  - assets/pixels.webp
+  - assets/google-logo.webp
+  - assets/nest-home-packages.webp
+  - assets/nest-audio-packages.webp

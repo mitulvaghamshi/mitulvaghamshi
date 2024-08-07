@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:gstore/models/product.dart';
 
 @immutable
-class Server {
-  static Product getProductBy(final String id) => dummyData[id]!;
+mixin Server {
+  static Product getProductBy(final String id) => _dummyData[id]!;
 
-  static Iterable<String> getProductList([String? filter]) {
-    if (filter == null) return dummyData.keys;
-    final ids = <String>[];
-    for (var product in dummyData.values) {
+  static Iterable<String> getProductList([String filter = '']) {
+    if (filter.isEmpty) return _dummyData.keys;
+
+    final items = <String>[];
+    for (final product in _dummyData.values) {
       if (product.title.toLowerCase().contains(filter.toLowerCase())) {
-        ids.add(product.id);
+        items.add(product.id);
       }
     }
-    return ids;
+    return items;
   }
 }
 
-const dummyData = {
+const _dummyData = <String, Product>{
   '0': Product(
     id: '0',
     title: 'Explore Pixel phones',
-    pictureURL: 'assets/pixels.png',
-    description: TextSpan(children: [
+    img: 'assets/pixels.webp',
+    info: TextSpan(children: [
       TextSpan(
         text: 'Capture the details.\n',
         style: TextStyle(color: Colors.black),
@@ -36,8 +37,8 @@ const dummyData = {
   '1': Product(
     id: '1',
     title: 'Nest Audio',
-    pictureURL: 'assets/nest.png',
-    description: TextSpan(children: [
+    img: 'assets/nest.webp',
+    info: TextSpan(children: [
       TextSpan(
         text: 'Amazing sound.\n',
         style: TextStyle(color: Colors.green),
@@ -51,8 +52,8 @@ const dummyData = {
   '2': Product(
     id: '2',
     title: 'Nest Audio Entertainment packages',
-    pictureURL: 'assets/nest-audio-packages.png',
-    description: TextSpan(children: [
+    img: 'assets/nest-audio-packages.webp',
+    info: TextSpan(children: [
       TextSpan(
         text: 'Built for music.\n',
         style: TextStyle(color: Colors.orange),
@@ -66,8 +67,8 @@ const dummyData = {
   '3': Product(
     id: '3',
     title: 'Nest Home Security packages',
-    pictureURL: 'assets/nest-home-packages.png',
-    description: TextSpan(children: [
+    img: 'assets/nest-home-packages.webp',
+    info: TextSpan(children: [
       TextSpan(
         text: 'Your home,\n',
         style: TextStyle(color: Colors.black),

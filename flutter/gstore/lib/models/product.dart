@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class Product {
   const Product({
     required this.id,
-    required this.pictureURL,
+    required this.img,
     required this.title,
-    required this.description,
+    required this.info,
   });
 
   final String id;
-  final String pictureURL;
+  final String img;
   final String title;
-  final TextSpan description;
+  final TextSpan info;
 }

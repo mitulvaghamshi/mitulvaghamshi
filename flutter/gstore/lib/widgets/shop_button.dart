@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gstore/utils/app_state.dart';
+import 'package:gstore/models/app_scope.dart';
 
 @immutable
 class ShopButton extends StatelessWidget {
@@ -9,9 +9,9 @@ class ShopButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (AppScope.of(context).cartItems.contains(id)) {
+    if (AppScope.of(context).cart.contains(id)) {
       return OutlinedButton(
-        onPressed: () => AppWidget.of(context).removeFromCart(id),
+        onPressed: () => AppScope.of(context).removeFromCart(id),
         style: OutlinedButton.styleFrom(
           foregroundColor: Colors.grey,
           side: const BorderSide(color: Colors.grey),
@@ -20,10 +20,10 @@ class ShopButton extends StatelessWidget {
       );
     }
     return OutlinedButton(
-      onPressed: () => AppWidget.of(context).addToCart(id),
+      onPressed: () => AppScope.of(context).addToCart(id),
       style: OutlinedButton.styleFrom(
-        foregroundColor: Colors.black,
-        side: const BorderSide(color: Colors.black),
+        foregroundColor: Colors.green,
+        side: const BorderSide(color: Colors.green),
       ),
       child: const Text('Add to cart'),
     );

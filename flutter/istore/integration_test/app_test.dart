@@ -1,8 +1,8 @@
-import 'package:istore/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:istore/main.dart';
 
 void main() {
   if (defaultTargetPlatform != TargetPlatform.iOS ||

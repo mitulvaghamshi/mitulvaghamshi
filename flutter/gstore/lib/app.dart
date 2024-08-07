@@ -1,72 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:gstore/utils/app_state.dart';
-import 'package:gstore/utils/server.dart';
-import 'package:gstore/widgets/cart_badge_icon.dart';
+import 'package:gstore/models/app_scope.dart';
+import 'package:gstore/widgets/cart_icon.dart';
 import 'package:gstore/widgets/product_tile.dart';
 import 'package:gstore/widgets/search_field.dart';
 
 @immutable
-class GoogleStore extends StatefulWidget {
+class GoogleStore extends StatelessWidget {
   const GoogleStore({super.key});
 
   @override
-  GoogleStoreState createState() => GoogleStoreState();
-}
-
-class GoogleStoreState extends State<GoogleStore> {
-  late final _controller = TextEditingController();
-  late final _focusNode = FocusNode();
-  bool _inSearch = false;
-
-  void _toggleSearch() {
-    setState(() => _inSearch = !_inSearch);
-    AppWidget.of(context).setProductList(Server.getProductList());
-    _controller.clear();
-  }
-
-  void _handleSearch() {
-    _focusNode.unfocus();
-    AppWidget.of(context)
-        .setProductList(Server.getProductList(_controller.text));
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final products = AppScope.of(context).products;
+    final state = AppScope.of(context);
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverAppBar(
-          pinned: true,
-          centerTitle: true,
-          leading: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Image.asset('assets/google-logo.png'),
-          ),
-          title: _inSearch
-              ? SearchField(
-                  focusNode: _focusNode,
-                  controller: _controller,
-                  onSubmit: _handleSearch,
-                  onClose: _toggleSearch,
-                )
-              : const Text('Google Store'),
-          actions: [
-            if (!_inSearch)
-              IconButton(
-                onPressed: _toggleSearch,
-                icon: const Icon(Icons.search, color: Colors.black),
-              ),
-            const Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: CartBadgeIcon(),
+      body: AnimatedBuilder(
+        animation: state,
+        builder: (context, child) => CustomScrollView(slivers: [
+          SliverAppBar(
+            pinned: true,
+            centerTitle: true,
+            leading: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Image.asset('assets/google-logo.webp'),
             ),
-          ],
-        ),
-        SliverList.builder(
-          itemCount: products.length,
-          itemBuilder: (_, index) => ProductTile(id: products.elementAt(index)),
-        ),
-      ]),
+            title: state.isSearchActive
+                ? SearchField(
+                    onSubmit: (filter) => state.getProducts(filter),
+                    onClose: state.toggleSearch,
+                  )
+                : const Text('Google Store'),
+            actions: [
+              if (!state.isSearchActive)
+                IconButton(
+                  onPressed: state.toggleSearch,
+                  icon: const Icon(Icons.search, color: Colors.black),
+                ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: CartIcon(count: state.cart.length),
+              ),
+            ],
+          ),
+          SliverList.builder(
+            itemCount: state.products.length,
+            itemBuilder: (_, index) => ProductTile(
+              product: state.getProductBy(index),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }

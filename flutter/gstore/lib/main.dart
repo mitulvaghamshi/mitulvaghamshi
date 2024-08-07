@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gstore/app.dart';
-import 'package:gstore/utils/app_state.dart';
+import 'package:gstore/models/app_scope.dart';
+import 'package:gstore/models/app_state.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,8 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Google Store',
-      theme: ThemeData.light(useMaterial3: true),
-      home: const AppWidget(child: GoogleStore()),
+      home: AppScope(data: AppState(), child: const GoogleStore()),
     );
   }
 }

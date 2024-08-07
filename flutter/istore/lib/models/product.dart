@@ -1,5 +1,5 @@
-import 'package:istore/utils/category.dart';
 import 'package:flutter/foundation.dart' hide Category;
+import 'package:istore/utils/category.dart';
 
 @immutable
 class Product {
@@ -18,12 +18,17 @@ class Product {
   final Category category;
 
   @override
-  String toString() =>
-      '$name {id:$id, price:$price, category:$category, isFeatured:$isFeatured}';
+  String toString() => '''
+$name {
+  id: $id,
+  price: $price,
+  category: $category,
+  isFeatured: $isFeatured
+}''';
 }
 
 extension ExProduct on Product {
-  String get itemAsset => '$id-0.jpg';
-  String get galleryAsset => '3.0x/$id-0.jpg';
   String get package => 'shrine_images';
+  String get itemAsset => '$id-0.jpg';
+  String get galleryAsset => '3.0x/$itemAsset';
 }

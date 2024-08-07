@@ -1,5 +1,5 @@
-import 'package:istore/widgets/gallery_item.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:istore/widgets/gallery_item.dart';
 
 @immutable
 class GalleryWidget extends StatelessWidget {
