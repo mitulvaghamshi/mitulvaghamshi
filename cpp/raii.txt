@@ -1,0 +1,25 @@
+RAII
+- Resource Acquisition Is Initialization
+
+RAIl Ensures:
+- Automatic cleanup
+- Exception safety
+- No memory/resource leaks
+
+Common RAIl classes in C++:
+
+smart pointers:
+- std::unique_ptr
+- std::shared_ptr 
+
+manage dynamic memory:
+- std::vector
+- std::string 
+
+manage file handles:
+- std::ifstream
+- std::ofstream
+
+manage locks:
+- std::lock_guard
+- std::scoped_lock
