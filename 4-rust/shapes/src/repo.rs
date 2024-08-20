@@ -1,0 +1,21 @@
+mod r#box;
+mod circle;
+mod cube;
+mod cylinder;
+mod ellipse;
+mod rectangle;
+mod sphere;
+mod square;
+mod tetrahedron;
+mod triangle;
+
+pub use circle::Circle;
+pub use cube::Cube;
+pub use cylinder::Cylinder;
+pub use ellipse::Ellipse;
+pub use r#box::Box;
+pub use rectangle::Rectangle;
+pub use sphere::Sphere;
+pub use square::Square;
+pub use tetrahedron::Tetrahedron;
+pub use triangle::Triangle;

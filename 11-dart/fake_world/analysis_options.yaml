@@ -1,0 +1,7 @@
+include:
+  - package:lints/recommended.yaml
+  - ../analysis_extra.yaml
+
+linter:
+  rules:
+    leading_newlines_in_multiline_strings: false

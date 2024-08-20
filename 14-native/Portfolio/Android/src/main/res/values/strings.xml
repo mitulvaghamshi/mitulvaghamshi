@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Portfolio App</string>
+    <string name="app_logo">App logo</string>
+
+    <string name="open_in_browser">Open in browser</string>
+
+    <string name="btn_continue">Continue</string>
+    <string name="transition">Infinite Transition</string>
+    <string name="animate">Animate Infinite Transition</string>
+
+    <string name="desc_img_me">Profile Picture</string>
+    <string name="profile_full_name">Mitul Vaghamshi_</string>
+    <string name="profile_developer_label">Software Developer</string>
+
+    <string name="markdown">Markdown</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="no_description">No description</string>
+    <string name="repo_lang_and_size">%1$s (%2$s)</string>
+
+    <string name="wes_qualification_label">Verified International Academic Qualifications</string>
+    <string name="desc_img_wes_logo">World Education Services logo</string>
+
+    <string name="cert_flutter_label">Flutter</string>
+    <string name="desc_cert_img_flutter_logo">Official Flutter Logo</string>
+    <string name="desc_img_cert_clock">Flutter Clock Challenge logo</string>
+    <string name="desc_img_cert_qr_code">Flutter Clock Credential QR Code</string>
+    <string name="cert_title_value">Flutter Clock Certificate</string>
+    <string name="cert_cred_label">CREDENTIAL</string>
+    <string name="cert_cred_name">Flutter Clock</string>
+    <string name="cert_cred_id_label">CREDENTIAL ID</string>
+    <string name="cert_cred_id_value">bhlz2ezh</string>
+    <string name="cert_issue_date_label">ISSUED ON</string>
+    <string name="cert_issue_date_value">2020–01–20</string>
+    <string name="cert_owner_name_label">OWNER NAME</string>
+    <string name="cert_owner_name_value">Mitul Vaghamshi</string>
+    <string name="cert_desc_value">Certificate for Flutter Clock Challenge issued to Mitul Vaghamshi on Jan 21, 2020</string>
+</resources>

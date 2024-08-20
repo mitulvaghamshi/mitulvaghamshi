@@ -1,0 +1,13 @@
+pigeon_shelter {
+  ["bird"] {
+    name = "Common wood Pigeon"
+    diet = "Seeds"
+    taxanomy {
+      species = "Culumba Palunbus"
+    }
+  }
+  ["address"] = "333 Bird St."
+}
+bird_count {
+  [pigeon_shelter] = 42
+}

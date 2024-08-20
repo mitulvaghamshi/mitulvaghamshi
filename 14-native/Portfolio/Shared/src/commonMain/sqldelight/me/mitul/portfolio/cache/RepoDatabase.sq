@@ -1,0 +1,36 @@
+CREATE TABLE Repo (
+    id          INTEGER NOT NULL PRIMARY KEY,
+    name        TEXT    NOT NULL,
+    url         TEXT    NOT NULL,
+    size        INTEGER NOT NULL,
+    language    TEXT    DEFAULT "Markdown",
+    description TEXT    DEFAULT "No description."
+);
+
+CREATE TABLE Topic (
+    topic_name  TEXT    NOT NULL,
+    repo_id     INTEGER NOT NULL REFERENCES Repo(id)
+);
+
+insertRepo:
+INSERT INTO Repo(id, name, url, size, language, description)
+VALUES(?,?, ?, ?, ?,?);
+
+insertTopic:
+INSERT INTO Topic(topic_name, repo_id)
+VALUES(?, ?);
+
+removeRepos:
+DELETE FROM Repo;
+
+removeTopics:
+DELETE FROM Topic;
+
+selectRepos:
+SELECT * FROM Repo ORDER BY name ASC;
+
+selectRepoById:
+SELECT * FROM Repo WHERE id = ?;
+
+selectTopicsByRepoId:
+SELECT topic_name FROM Topic WHERE repo_id = ?;

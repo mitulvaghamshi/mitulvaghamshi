@@ -1,0 +1,21 @@
+module AcmeCICD
+
+class Pipeline {
+  name: String(name_requires_branch_name)?
+
+  hidden name_requires_branch_name = (_) ->
+    if (branch_name == null)
+      throw("Pipelines that set a 'name' must also set a 'branch_name'.")
+    else
+      true
+
+  branch_name: String?
+}
+
+timeout: Int(this >= 3)
+
+pipelines: Listing<Pipeline>
+
+output {
+  renderer = new YamlRenderer { }
+}
