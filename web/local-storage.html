@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser localStorage | example</title>
+    <style>
+        :root {
+            color-scheme: dark light;
+        }
+
+        main {
+            margin: auto;
+            padding: 5px;
+            outline: 1px solid;
+            text-align: center;
+        }
+
+        input,
+        button {
+            width: 150px;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        input[type="color"] {
+            width: 150px;
+            height: 40px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="title-label">localStorage</h1>
+        <hr>
+        <section>
+            <form action="#" name="input-form" onsubmit="return false;">
+                <input type="text" id="name" name="name" required placeholder="Enter name..." />
+                <br>
+                <input type="number" id="age" name="age" required placeholder="Enter age..." />
+                <br>
+                <input type="color" id="color" name="color" />
+                <hr>
+                <button id="save-data">saveData</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        window.onload = () => {
+            // MDN: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode]
+            "use strict";
+
+            const myStorage = window.localStorage;
+
+            const scaleUpConfig = { transform: "scale(1)" };
+            const scaleDownConfig = { transform: "scale(0.9)" };
+            const scaleAnimFlow = [scaleUpConfig, scaleDownConfig, scaleDownConfig, scaleUpConfig];
+            const duration = { duration: 300, iterations: 2 };
+            const animate = ({ target }) => target.animate(scaleAnimFlow, duration);
+
+            const form = document.forms["input-form"];
+            const inputName = form["name"];
+            const inputAge = form["age"];
+            const inputColor = form["color"];
+
+            inputName.oninvalid = animate;
+            inputAge.oninvalid = animate;
+
+            if (myStorage.getItem("NAME") !== null) {
+                inputName.value = myStorage.getItem("NAME");
+                inputAge.value = myStorage.getItem("AGE");
+                inputColor.value = myStorage.getItem("COLOR");
+            }
+
+            document.getElementById("save-data").onclick = (event) => {
+                const name = inputName.value;
+                const age = parseInt(inputAge.value);
+                const color = inputColor.value;
+
+                if (name !== null && name !== "" && !isNaN(age) && age > 0 && color !== "") {
+                    myStorage.setItem("NAME", name);
+                    myStorage.setItem("AGE", age);
+                    myStorage.setItem("COLOR", color);
+                } else {
+                    inputAge.value = "";
+                    inputAge.focus();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
