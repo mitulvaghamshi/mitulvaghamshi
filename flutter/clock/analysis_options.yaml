@@ -1,0 +1,15 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  errors:
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    - avoid_print
+    - prefer_single_quotes
+    - prefer_const_declarations
+    - prefer_const_constructors
+    - avoid_redundant_argument_values
+    - camel_case_types
