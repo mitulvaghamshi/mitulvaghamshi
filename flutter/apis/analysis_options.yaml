@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    - avoid_print
+    - prefer_single_quotes
+    - prefer_const_declarations
+    - prefer_const_constructors
+    - always_use_package_imports
+    - avoid_web_libraries_in_flutter
+    - avoid_redundant_argument_values
+    - avoid_renaming_method_parameters
+    - prefer_const_constructors_in_immutables
+    - prefer_const_literals_to_create_immutables

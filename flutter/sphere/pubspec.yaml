@@ -1,0 +1,44 @@
+name: sphere
+description: A new Flutter project.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/custom.webp
+    - assets/earth.webp
+    - assets/jupiter.webp
+    - assets/mars.webp
+    - assets/mercury.webp
+    - assets/moon.webp
+    - assets/neptune.webp
+    - assets/saturn.webp
+    - assets/stars.webp
+    - assets/sun.webp
+    - assets/uranus.webp
+    - assets/venus.webp
+    - assets/thumb/custom.webp
+    - assets/thumb/earth.webp
+    - assets/thumb/jupiter.webp
+    - assets/thumb/mars.webp
+    - assets/thumb/mercury.webp
+    - assets/thumb/moon.webp
+    - assets/thumb/neptune.webp
+    - assets/thumb/saturn.webp
+    - assets/thumb/stars.webp
+    - assets/thumb/sun.webp
+    - assets/thumb/uranus.webp
+    - assets/thumb/venus.webp

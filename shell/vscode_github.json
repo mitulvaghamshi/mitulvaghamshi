@@ -1,0 +1,73 @@
+{
+    // Files
+    "files.autoSave": "afterDelay",
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    // Workbench
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.editor.tabActionLocation": "left",
+    "workbench.editor.highlightModifiedTabs": true,
+    // Editor
+    "editor.fontSize": 13,
+    "editor.hover.delay": 1500,
+    "editor.tabCompletion": "on",
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.suggest.showStatusBar": true,
+    "editor.renderLineHighlight": "gutter",
+    "editor.emptySelectionClipboard": false,
+    "editor.unfoldOnClickAfterEndOfLine": true,
+    "editor.semanticHighlighting.enabled": false,
+    "editor.bracketPairColorization.enabled": false,
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    "html.format.wrapLineLength": 0,
+    // Terminal
+    "terminal.integrated.fontSize": 14,
+    // Dart plugin
+    "dart.hotReloadProgress": "statusBar",
+    "dart.renameFilesWithClasses": "prompt",
+    // Dart editor overrides
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80,
+            100,
+            120
+        ],
+        "editor.selectionHighlight": false,
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off",
+        "editor.foldingImportsByDefault": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit"
+        }
+    },
+    // File explorer
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.db": "${capture}.*",
+        "*.dart": "${capture}.*.dart",
+        "pubspec.yaml": "pubspec.lock",
+        "package.json": "package-lock.json",
+        "main.dart": "generated_plugin_registrant.dart",
+        ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+        "firebase.json": ".firebase, firebase.rules, .firebaserc, firestore-debug.log, firebase-debug.log, firestore.indexes.json, firestore.rules, ui-debug.log",
+        "readme.md": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
+    },
+    // Tasks
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
+    "editor.stickyScroll.enabled": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.activityBar.location": "hidden",
+    "chat.commandCenter.enabled": false,
+    "workbench.navigationControl.enabled": false,
+    "window.commandCenter": false
+}
