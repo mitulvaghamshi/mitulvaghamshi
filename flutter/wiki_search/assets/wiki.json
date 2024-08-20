@@ -1,0 +1,115 @@
+{
+    "batchcomplete": "",
+    "continue": {
+        "sroffset": 10,
+        "continue": "-||"
+    },
+    "query": {
+        "searchinfo": {
+            "totalhits": 89722,
+            "suggestion": "apply",
+            "suggestionsnippet": "apply"
+        },
+        "search": [
+            {
+                "ns": 0,
+                "title": "DEBUG MODE",
+                "pageid": 18978754,
+                "size": 1198600,
+                "wordcount": 8251,
+                "snippet": "This is sample item, data is fetched from assets during DEBUG build. See request.dart for more info and to use real wikipedia search.",
+                "timestamp": "2022-11-22T19:48:41Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apple",
+                "pageid": 18978754,
+                "size": 82496,
+                "wordcount": 8251,
+                "snippet": "An <span class=\"searchmatch\">apple</span> is an edible fruit produced by an <span class=\"searchmatch\">apple</span> tree (Malus domestica). <span class=\"searchmatch\">Apple</span> trees are cultivated worldwide and are the most widely grown species in",
+                "timestamp": "2022-11-22T19:48:41Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apple Inc.",
+                "pageid": 856,
+                "size": 295047,
+                "wordcount": 27823,
+                "snippet": "<span class=\"searchmatch\">Apple</span> Inc. is an American multinational technology company headquartered in Cupertino, California, United States. <span class=\"searchmatch\">Apple</span> is the largest technology company",
+                "timestamp": "2022-11-23T19:35:58Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apple (disambiguation)",
+                "pageid": 36071326,
+                "size": 4303,
+                "wordcount": 495,
+                "snippet": "An <span class=\"searchmatch\">apple</span> is an edible fruit. <span class=\"searchmatch\">Apple</span>, <span class=\"searchmatch\">Apples</span> or <span class=\"searchmatch\">APPLE</span> may also refer to:<span class=\"searchmatch\">Apple</span> Inc., an American multinational technology company <span class=\"searchmatch\">Apple</span> (name), a list of",
+                "timestamp": "2022-10-20T22:50:46Z"
+            },
+            {
+                "ns": 0,
+                "title": "IPhone",
+                "pageid": 8841749,
+                "size": 139393,
+                "wordcount": 11704,
+                "snippet": "and marketed by <span class=\"searchmatch\">Apple</span> Inc. These devices use <span class=\"searchmatch\">Apple</span>'s iOS mobile operating system. The first-generation iPhone was announced by then-<span class=\"searchmatch\">Apple</span> CEO Steve Jobs",
+                "timestamp": "2022-11-21T00:05:20Z"
+            },
+            {
+                "ns": 0,
+                "title": "MacOS",
+                "pageid": 20640,
+                "size": 166185,
+                "wordcount": 14664,
+                "snippet": "operating system developed and marketed by <span class=\"searchmatch\">Apple</span> Inc. since 2001. It is the primary operating system for <span class=\"searchmatch\">Apple</span>'s Mac computers. Within the market of desktop",
+                "timestamp": "2022-11-22T01:01:07Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apples to Apples",
+                "pageid": 277985,
+                "size": 5131,
+                "wordcount": 514,
+                "snippet": "<span class=\"searchmatch\">Apples</span> to <span class=\"searchmatch\">Apples</span> is a party game originally published by Out of the Box Publishing Inc., and now by Mattel. Players start with a hand of seven &quot;red apple&quot;",
+                "timestamp": "2022-10-29T22:03:44Z"
+            },
+            {
+                "ns": 0,
+                "title": "IOS",
+                "pageid": 16161443,
+                "size": 214573,
+                "wordcount": 15041,
+                "snippet": "(formerly iPhone OS) is a mobile operating system created and developed by <span class=\"searchmatch\">Apple</span> Inc. exclusively for its hardware. It is the operating system that powers",
+                "timestamp": "2022-11-19T07:45:24Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apple silicon",
+                "pageid": 32327247,
+                "size": 185218,
+                "wordcount": 11588,
+                "snippet": "<span class=\"searchmatch\">Apple</span> silicon is a series of system on a chip (SoC) and system in a package (SiP) processors designed by <span class=\"searchmatch\">Apple</span> Inc., mainly using the ARM architecture",
+                "timestamp": "2022-11-21T22:25:57Z"
+            },
+            {
+                "ns": 0,
+                "title": "ITunes",
+                "pageid": 186266,
+                "size": 39323,
+                "wordcount": 3533,
+                "snippet": "management utility, and the client app for the iTunes Store. Developed by <span class=\"searchmatch\">Apple</span> Inc., it is used to purchase, play, download, and organize digital multimedia",
+                "timestamp": "2022-11-25T02:21:30Z"
+            },
+            {
+                "ns": 0,
+                "title": "Apple Watch",
+                "pageid": 43239050,
+                "size": 202425,
+                "wordcount": 13944,
+                "snippet": "<span class=\"searchmatch\">Apple</span> Watch is a line of smartwatches produced by <span class=\"searchmatch\">Apple</span> Inc. It incorporates fitness tracking, health-oriented capabilities, and wireless telecommunication",
+                "timestamp": "2022-11-26T02:15:08Z"
+            }
+        ]
+    }
+}

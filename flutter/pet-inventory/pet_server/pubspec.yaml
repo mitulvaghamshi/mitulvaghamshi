@@ -1,0 +1,16 @@
+name: pet_server
+description: API Server for Per Inventory app.
+
+version: 1.0.0
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  shelf: ^1.4.0
+  shelf_router: ^1.1.0
+  sqlite3: ^3.1.1
+
+dev_dependencies:
+  extra_lints:
+    git: https://github.com/mitulvaghamshi/extra_lints.git
