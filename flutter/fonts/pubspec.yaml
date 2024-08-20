@@ -1,0 +1,123 @@
+name: fonts
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.4
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: decorated
+      fonts:
+        - asset: assets/decorated.ttf
+    - family: digital
+      fonts:
+        - asset: assets/digital.ttf
+    - family: droid
+      fonts:
+        - asset: assets/droid.otf
+    - family: enjoy the time hollow
+      fonts:
+        - asset: assets/Enjoy The Time/enjoy the time hollow.otf
+    - family: enjoy the time inverse
+      fonts:
+        - asset: assets/Enjoy The Time/enjoy the time inverse.otf
+    - family: enjoy the time
+      fonts:
+        - asset: assets/Enjoy The Time/enjoy the time.otf
+    - family: eternal love hollow inverse
+      fonts:
+        - asset: assets/Eternal Love/eternal love hollow inverse.otf
+    - family: eternal love hollow
+      fonts:
+        - asset: assets/Eternal Love/eternal love hollow.otf
+    - family: eternal love inverse
+      fonts:
+        - asset: assets/Eternal Love/eternal love inverse.otf
+    - family: eternal love
+      fonts:
+        - asset: assets/Eternal Love/eternal love.otf
+    - family: font-011
+      fonts:
+        - asset: assets/font-011.ttf
+    - family: frame work filled inverse
+      fonts:
+        - asset: assets/Frame Work/frame work filled inverse.otf
+    - family: frame work hollow inverse
+      fonts:
+        - asset: assets/Frame Work/frame work hollow inverse.otf
+    - family: frame work hollow
+      fonts:
+        - asset: assets/Frame Work/frame work hollow.otf
+    - family: frame work
+      fonts:
+        - asset: assets/Frame Work/frame work.otf
+    - family: frame
+      fonts:
+        - asset: assets/frame.ttf
+    - family: frankenstain monster hollow
+      fonts:
+        - asset: assets/Frankenstain Monster/frankenstain monster hollow.otf
+    - family: frankenstain monster
+      fonts:
+        - asset: assets/Frankenstain Monster/frankenstain monster.otf
+    - family: gabrielle hollow inverse
+      fonts:
+        - asset: assets/Gabrielle/gabrielle hollow inverse.otf
+    - family: gabrielle hollow
+      fonts:
+        - asset: assets/Gabrielle/gabrielle hollow.otf
+    - family: gabrielle inverse
+      fonts:
+        - asset: assets/Gabrielle/gabrielle inverse.otf
+    - family: gabrielle
+      fonts:
+        - asset: assets/Gabrielle/gabrielle.otf
+    - family: game player hollow inverse
+      fonts:
+        - asset: assets/Game Player/game player hollow inverse.otf
+    - family: game player hollow
+      fonts:
+        - asset: assets/Game Player/game player hollow.otf
+    - family: game player inverse
+      fonts:
+        - asset: assets/Game Player/game player inverse.otf
+    - family: game player
+      fonts:
+        - asset: assets/Game Player/game player.otf
+    - family: leafly
+      fonts:
+        - asset: assets/leafly.ttf
+    - family: mandalas
+      fonts:
+        - asset: assets/mandalas.ttf
+    - family: mountain dew
+      fonts:
+        - asset: assets/mountain dew.ttf
+    - family: nano inverse
+      fonts:
+        - asset: assets/Nano/nano inverse.otf
+    - family: nano
+      fonts:
+        - asset: assets/Nano/nano.otf
+    - family: origami
+      fonts:
+        - asset: assets/origami.ttf
+    - family: precious
+      fonts:
+        - asset: assets/precious.ttf
+    - family: sketch rock wall
+      fonts:
+        - asset: assets/sketch rock wall.ttf
+

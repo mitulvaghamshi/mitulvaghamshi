@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser localStorage | example</title>
+    <style>
+        :root {
+            color-scheme: dark light;
+        }
+
+        main {
+            margin: auto;
+            padding: 5px;
+            outline: 1px solid;
+            text-align: center;
+        }
+
+        input,
+        button {
+            width: 150px;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        input[type="color"] {
+            width: 150px;
+            height: 40px;
+            padding: 0px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="title-label">localStorage</h1>
+        <hr>
+        <section>
+            <form action="#" name="input-form" onsubmit="return false;">
+                <input type="text" id="name" name="name" required placeholder="Enter name" />
+                <input type="number" id="age" name="age" required placeholder="Enter age" />
+                <input type="color" id="color" name="color" />
+                <hr>
+                <button id="save-data">saveData</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        window.onload = () => {
+            const scaleUpConfig = { transform: "scale(1)" };
+            const scaleDownConfig = { transform: "scale(0.9)" };
+            const scaleAnimFlow = [scaleUpConfig, scaleDownConfig, scaleDownConfig, scaleUpConfig];
+            const duration = { duration: 300, iterations: 3 };
+            const animate = ({ target }) => target.animate(scaleAnimFlow, duration);
+
+            const form = document.forms["input-form"];
+            const inputName = form["name"];
+            const inputAge = form["age"];
+            const inputColor = form["color"];
+
+            inputName.oninvalid = animate;
+            inputAge.oninvalid = animate;
+
+            const localStorage = window.localStorage;
+
+            if (localStorage.getItem("NAME") !== null) {
+                inputName.value = localStorage.getItem("NAME");
+                inputAge.value = localStorage.getItem("AGE");
+                inputColor.value = localStorage.getItem("COLOR");
+            }
+
+            document.getElementById("save-data").onclick = (event) => {
+                const name = inputName.value;
+                const age = parseInt(inputAge.valueAsNumber);
+                const color = inputColor.value;
+
+                localStorage.setItem("COLOR", color);
+                if (name === "") {
+                    inputName.focus()
+                    return;
+                }
+                localStorage.setItem("NAME", name);
+                if (isNaN(age) || age <= 0) {
+                    inputAge.focus();
+                    return;
+                }
+                localStorage.setItem("AGE", age);
+            }
+        }
+    </script>
+</body>
+
+</html>
