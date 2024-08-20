@@ -1,0 +1,17 @@
+birds {
+  "Pigeon"
+  "Parror"
+  "Barn Owl"
+  "Falcon"
+}
+
+habitats {
+  [birds[0]] = "Streets"
+  [birds[1]] = "Parks"
+  [birds[2]] = "Forests"
+  [birds[3]] = "Mountains"
+}
+
+new_habitats = (habitats) {
+  [birds[1]] = "Underwater"
+}

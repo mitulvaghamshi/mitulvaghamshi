@@ -1,0 +1,6 @@
+import "pigeon.pkl"
+
+parrot = (pigeon) {
+  name = "Parrot"
+  diet = "Barries"
+}

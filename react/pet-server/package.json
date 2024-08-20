@@ -1,0 +1,15 @@
+{
+  "name": "pet-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "server:run": "ISDEV=false node index.js",
+    "server:dev": "ISDEV=true node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "crypto": "^1.0.1",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}

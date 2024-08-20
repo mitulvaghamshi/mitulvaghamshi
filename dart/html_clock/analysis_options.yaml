@@ -1,0 +1,3 @@
+include:
+  - package:lints/recommended.yaml
+  - ../../../mitulvaghamshi/analysis_strict_mode.yaml

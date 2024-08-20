@@ -1,0 +1,7 @@
+include:
+  - package:lints/recommended.yaml
+  - ../../../mitulvaghamshi/analysis_strict_mode.yaml
+
+linter:
+  rules:
+    leading_newlines_in_multiline_strings: false

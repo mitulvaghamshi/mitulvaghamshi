@@ -1,0 +1,3 @@
+2026/04/21 21:28:31 Server listening at port 3001
+2026/04/21 21:28:44 GET     /video
+2026/04/21 21:28:44 Error writing body: write tcp [::1]:3001->[::1]:61432: write: broken pipe

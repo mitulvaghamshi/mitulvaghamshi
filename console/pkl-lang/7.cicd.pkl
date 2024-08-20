@@ -1,0 +1,10 @@
+amends "modules/AcmeCICD.pkl"
+
+timeout = 3
+
+pipelines {
+  new {
+    name = "prb"
+    branch_name = "main"
+  }
+}

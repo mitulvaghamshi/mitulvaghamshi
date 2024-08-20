@@ -1,0 +1,8 @@
+module TutorialPart
+
+name: String
+part: Int
+hasExercises: Boolean = true
+amountLearned: Float = 13.37
+duration: Duration = 30.min
+bandwidthRequirementsPerSecond: DataSize = 50.mib.toUnit("mb")

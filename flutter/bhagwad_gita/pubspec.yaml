@@ -1,0 +1,26 @@
+name: bhagwad_gita
+description: A new Flutter project.
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/gita_reflections_en.json
+    - assets/gita_reflections_hi.json
+    - assets/gita_snippets_en.json
+    - assets/gita_snippets_hi.json
+    - assets/gita.json
