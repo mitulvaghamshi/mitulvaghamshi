@@ -1,0 +1,29 @@
+/* Font Face Overrides for Layout Stability */
+@font-face {
+    font-family: "Playfair Display";
+    src: local("Georgia");
+    /* Adjusting size to match Playfair's typical proportions in a serif stack */
+    size-adjust: 98%;
+    line-height: 1.2;
+}
+
+@font-face {
+    font-family: "Cinzel Decorative";
+    src: local("serif");
+    /* Cinzel is quite wide, so we keep it standard but use a high-quality serif fallback */
+    size-adjust: 100%;
+}
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: local("Arial");
+    /* Adjusting Arial to mimic the spacing of modern sans-serifs like Jakarta */
+    size-adjust: 96%;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: local("Helvetica", "Arial");
+    /* Outfit is very similar in geometry to Helvetica/Arial */
+    size-adjust: 100%;
+}

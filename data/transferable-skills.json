@@ -1,0 +1,121 @@
+{
+    "Clerical": [
+        "Bookkeeping",
+        "Classifying",
+        "Collecting",
+        "Compiling",
+        "Computing",
+        "Examining",
+        "Filling",
+        "Organizing",
+        "Recording",
+        "WordProcessing"
+    ],
+    "Communication": [
+        "Editing",
+        "Explaining",
+        "Influencing",
+        "Interpreting",
+        "Listening",
+        "Mediating",
+        "Promoting",
+        "Speaking",
+        "Translating",
+        "Writing"
+    ],
+    "Creative": [
+        "Designing",
+        "Developing",
+        "Establishing",
+        "Illustrating",
+        "Imagining",
+        "Improvising",
+        "Inventing",
+        "Performing",
+        "Revitalizing",
+        "Visualizing"
+    ],
+    "Financial": [
+        "Accounting",
+        "Administering",
+        "Allocating",
+        "Auditing",
+        "Balancing",
+        "Calculating",
+        "Forecasting",
+        "Investing",
+        "Projecting"
+    ],
+    "Management": [
+        "Communicating",
+        "Consulting",
+        "Coordinating",
+        "Delegating",
+        "Directing",
+        "Evaluating",
+        "Leading",
+        "Negotiating",
+        "Persuading",
+        "Planning"
+    ],
+    "ProblemSolving": [
+        "Analyzing",
+        "Appraising",
+        "Diagnosing",
+        "Examining",
+        "Executing",
+        "Planning",
+        "Proving",
+        "Reasoning",
+        "Recognizing",
+        "Validating"
+    ],
+    "PublicRelations": [
+        "Conducting",
+        "Consulting",
+        "Informing",
+        "Planning",
+        "Presenting",
+        "Promoting",
+        "Representing",
+        "Responding",
+        "Researching",
+        "Writing"
+    ],
+    "Research": [
+        "Assessing",
+        "Calculating",
+        "Collecting",
+        "Diagnosing",
+        "Evaluating",
+        "Examining",
+        "Extrapolating",
+        "Interviewing",
+        "Investigating",
+        "Synthesizing"
+    ],
+    "Technical": [
+        "Adjusting",
+        "Aligning",
+        "Assembling",
+        "Drafting",
+        "Engineering",
+        "Installing",
+        "Observing",
+        "Operating",
+        "Programming",
+        "Repairing"
+    ],
+    "Training": [
+        "Adapting",
+        "Communicating",
+        "Demonstrating",
+        "Enabling",
+        "Encouraging",
+        "Evaluating",
+        "Explaining",
+        "Instructing",
+        "Planning",
+        "Stimulating"
+    ]
+}

@@ -1,0 +1,3 @@
+amends "pigeon.pkl"
+
+name = "Parrot"

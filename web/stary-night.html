@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stary Night</title>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+            --font-color: #212121;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --font-color: #f8f8ff;
+            }
+        }
+
+        #board {
+            width: calc(100vw - 20px);
+            height: calc(100vh - 20px);
+        }
+
+        canvas {
+            border: 2px solid var(--font-color);
+        }
+
+        #shootingStar {
+            fill: var(--font-color);
+            animation: shootingAnim 7s ease-in-out forwards infinite;
+        }
+
+        @keyframes shootingAnim {
+            0% {
+                transform: rotateZ(-45deg);
+            }
+
+            100% {
+                transform: translate(100%, 50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main id="container">
+        <svg id="board" width="90%" height="90%">
+            <circle id="shootingStar" cx="100" cy="100" r="2.5" />
+        </svg>
+    </main>
+
+    <script>
+        onload = () => {
+            const xmlNS = 'http://www.w3.org/2000/svg';
+            for (i = 0; i < 500; i++) {
+                const dot = document.createElementNS(xmlNS, 'circle');
+                dot.setAttribute('id', `circle-${i}`);
+                dot.setAttribute('style', 'fill:var(--font-color)');
+                dot.setAttribute('r', Math.random());
+                dot.setAttribute('cx', Math.random() * window.innerWidth);
+                dot.setAttribute('cy', Math.random() * window.innerHeight);
+                board.appendChild(dot);
+            }
+        };
+    </script>
+</body>
+
+</html>

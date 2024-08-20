@@ -1,0 +1,546 @@
+num1 = 123
+num2 = 0x012AFF
+num3 = 0b00010111
+num4 = 0o755
+
+num1 = 1_000_000
+num2 = 0x0134_64DE
+num3 = 0b0001_0111
+num4 = 0o0134_6475
+
+comparison1 = 5 == 2
+comparison2 = 5 < 2
+comparison3 = 5 > 2
+comparison4 = 5 <= 2
+comparison5 = 5 >= 2
+
+num1 = 5 + 2
+num2 = 5 - 2
+num3 = 5 * 2
+num4 = 5 / 2
+num5 = 5 ~/ 2
+num6 = 5 % 2
+num7 = 5 ** 2
+
+clientPort: UInt16
+serverPort: Int(isBetween(0, 1023))
+
+num1 = .23
+num2 = 1.23
+num3 = 1.23e2
+num4 = 1.23e-2
+
+notANumber = NaN
+positiveInfinity = Infinity
+negativeInfinity = -Infinity
+
+x: Float(isFinite)
+x: Float(isBetween(0, 10e6))
+
+res1 = true && false
+res2 = true || false
+res3 = !false
+res4 = true.xor(false)
+res5 = true.implies(false)
+
+name = "Dodo"
+greeting = "Hi, \(name)! \u{26} \u{E9} \u{1F600}"
+
+x = 42
+str = "\(x + 2) plus \(x * 2) is \(0x80)"
+
+bird = "Dodo"
+message = """
+Although the \(bird) is extinct,
+the species will be remembered.
+"""
+
+strLength = "dodo".length
+reversedStr = "dodo".reverse()
+hasAx = "dodo".contains("alive")
+trimmed = "  dodo  ".trim()
+
+duration1 = 5.ns  // nanoseconds (smallest unit)
+duration2 = 5.us  // microseconds
+duration3 = 5.ms  // milliseconds
+duration4 = 5.s   // seconds
+duration5 = 5.min // minutes
+duration6 = 5.h   // hours
+duration7 = 3.d   // days (largest unit)
+
+comparison1 = 5.min == 3.s
+comparison2 = 5.min < 3.s
+comparison3 = 5.min > 3.s
+comparison4 = 5.min <= 3.s
+comparison5 = 5.min >= 3.s
+
+res1 = 5.min + 3.s
+res2 = 5.min - 3.s
+res3 = 5.min * 3
+res4 = 5.min / 3
+res5 = 5.min / 3.min
+res6 = 5.min ~/ 3
+res7 = 5.min ~/ 3.min
+res8 = 5.min % 3
+res9 = 5.min ** 3
+
+x = 5
+xMinutes = x.min
+y = 3
+xySeconds = (x + y).s
+
+datasize1 = 5.b  // bytes (smallest unit)
+datasize2 = 5.kb // kilobytes
+datasize3 = 5.mb // megabytes
+datasize4 = 5.gb // gigabytes
+datasize5 = 5.tb // terabytes
+datasize6 = 5.pb // petabytes (largest unit)
+
+datasize1 = 5.b   // bytes (smallest unit)
+datasize2 = 5.kib // kibibytes
+datasize3 = 5.mib // mebibytes
+datasize4 = 5.gib // gibibytes
+datasize5 = 5.tib // tebibytes
+datasize6 = 5.pib // pebibytes (largest unit)
+
+comparison1 = 5.mb == 3.kib
+comparison2 = 5.mb < 3.kib
+comparison3 = 5.mb > 3.kib
+comparison4 = 5.mb <= 3.kib
+comparison5 = 5.mb >= 3.kib
+
+res1 = 5.mb + 3.kib
+res2 = 5.mb - 3.kib
+res3 = 5.mb * 3
+res4 = 5.mb / 3
+res5 = 5.mb / 3.mb
+res6 = 5.mb ~/ 3
+res7 = 5.mb ~/ 3.mb
+res8 = 5.mb % 3
+res9 = 5.mb ** 3
+
+x = 5
+xMegabytes = x.mb
+y = 3
+xyKibibytes = (x + y).kib
+
+dodo {
+  name = "Dodo"
+  extinct = true
+}
+
+dodoName = dodo.name
+dodoIsExtinct = dodo.extinct
+
+dodo {
+  name = "Dodo"
+  taxonomy {
+    `class` = "Aves"
+  }
+}
+
+tortoise = (dodo) {
+  name = "Galápagos tortoise"
+  taxonomy {
+    `class` = "Reptilia"
+  }
+}
+
+pigeon { // Amends declaration.
+  name = "Turtle dove"
+  extinct = false
+}
+
+parrot = (pigeon) { // Amends expression.
+  name = "Parrot"
+}
+
+pigeon {
+  name = "Common wood pigeon"
+} {
+  extinct = false
+}
+
+dodo = (pigeon) {
+  name = "Dodo"
+} {
+  extinct = true
+}
+
+penguin {
+  eggIncubation = 40.d
+  adultWeightInGrams = eggIncubation.value * 100
+}
+adultWeightInGrams = penguin.adultWeightInGrams
+
+madeUpBird = (penguin) {
+  eggIncubation = 11.d
+}
+adultWeightInGrams = madeUpBird.adultWeightInGrams
+
+dodo {
+  name = "Dodo"
+  extinct = true
+}
+
+dodo
+  .toMap()
+  .remove("name")
+  .toDynamic()
+
+class Bird {
+  name: String
+  lifespan: Int
+}
+
+pigeon = new Dynamic {
+  name = "Pigeon"
+  lifespan = 8
+}.toTyped(Bird)
+
+class Bird {
+  name: String
+  lifespan: Int
+  nameSignWidth: UInt = nameAndLifespanInIndex.length
+  hidden nameAndLifespanInIndex = "\(name), \(lifespan)"
+}
+
+pigeon = new Bird {
+  name = "Pigeon"
+  lifespan = 8
+}
+
+pigeonInIndex = pigeon.nameAndLifespanInIndex
+
+pigeonDynamic = pigeon.toDynamic()
+
+favoritePigeon = (pigeon) {
+  nameAndLifespanInIndex = "Bettie, \(lifespan)"
+}
+
+samePigeon = pigeon == favoritePigeon
+
+class Bird {
+  name: String
+  lifespan: Int
+  hidden nameAndLifespanInIndex = "\(name)\(separator) \(lifespan)"
+  local separator = ","
+}
+
+pigeon = new Bird {
+  name = "Pigeon"
+  lifespan = 8
+}
+
+pigeonInIndex = pigeon.nameAndLifespanInIndex
+pigeonSeparator = pigeon.separator // Error
+
+fixed laysEggs: Boolean = true
+
+fixed birds: Listing<String> = new {
+  "Pigeon"
+  "Hawk"
+  "Penguin"
+}
+
+abstract class Bird {
+  fixed canFly: Boolean
+  name: String
+}
+
+class Penguin extends Bird {
+  canFly = false
+  fixed name = "Penguin"
+}
+
+class Bird {
+  wingspan: Int
+  weight: Int
+  fixed wingspanWeightRatio: Int = wingspan / weight
+}
+
+abstract class Bird {
+  fixed species: String
+}
+
+class Osprey extends Bird {
+  fixed species: "Pandion haliaetus"
+}
+
+/* const */ pigeonName: String = "Pigeon" // Non-const
+
+const function birdLifespan(i: Int): Int = (i / 4).toInt()
+
+class Bird {
+  name: String
+  lifespan: Int
+}
+
+const bird: Bird = new {
+  name = pigeonName // Error: reference to non-const
+  lifespan = birdLifespan(24) // Valid.
+}
+
+class Bird {
+  lifespan: Int
+  description: String
+  speciesName: "Bird"
+}
+
+const bird: Bird = new {
+  lifespan = 8
+  description = "species: \(speciesName), lifespan: \(lifespan)"
+}
+
+/* const */ pigeonName: String = "Pigeon"
+
+class Bird {
+  name: String = pigeonName
+}
+
+@Deprecated { message = "Replace with \(pigeonName)" }
+oldPigeonName: String
+
+typealias IsPigeonName = String(pigeonName)
+
+//  +import "Birds.pkl"
+//  +
+//  pigeonName: String = "Pigeon"
+//
+//  class Bird {
+//  -   name: String = pigeonName
+//  +   name: String = Birds.pigeonName
+//  }
+
+birds = new Listing { // Listing<Dynamic>
+  new {
+    name = "Pigeon"
+    diet = "Seed"
+  }
+  new {
+    name = "Parrot"
+    diet = "Berries"
+  }
+}
+
+firstBirdName = birds[0].name
+secondBirdDiet = birds[1].diet
+
+listing = new Listing {
+  "Pigeon"
+  3.min
+  new Listing {
+    "Barn owl"
+  }
+}
+
+listing = new Listing {
+  local pigeon: String = "Pigeon"
+  pigeon
+  "A " + pigeon + " is a bird"
+}
+
+birds = new Listing {
+  new {
+    name = "Pigeon"
+    diet = "Seeds"
+  }
+  new {
+    name = "Parrot"
+    diet = "Berries"
+  }
+}
+
+birds2 = (birds) {
+  new {
+    name = "Barn owl"
+    diet = "Mice"
+  }
+  [0] {
+    diet = "Worms"
+  }
+  [1] = new {
+    name = "Albatross"
+    diet = "Fish"
+  }
+}
+
+birds = new Listing {
+  new {
+    name = "Pigeon"
+    diet = "Seeds"
+  }
+  (this[0]) {
+    name = "Parrot"
+  }
+}
+
+newBirds = (birds) {
+  [0] {
+    diet = "Worms"
+  }
+}
+
+secondBirdDiet = newBirds[1].diet
+
+reversedbirds = birds
+  .toList()
+  .reverse()
+  .toListing()
+
+birds = new Listing {
+  default {
+    lifespan = 8
+  }
+  new {
+    name = "Pigeon"
+  }
+  new {
+    name = "Parrot"
+    lifespan = 20
+  }
+}
+
+birds2 = (birds) {
+  default {
+    lifespan = 8
+    diet = "Seeds"
+  }
+}
+
+class Bird {
+  name: String
+  lifespan: Int
+}
+
+birds: Listing<Bird>(isDistinct)
+
+birds: Listing<Bird>(isDistinctBy((it) -> it.name))
+
+birds = new Mapping {
+  ["Pigeon"] {
+    lifespan = 8
+    diet = "Seeds"
+  }
+  ["Parrot"] {
+    lifespan = 20
+    diet = "Berries"
+  }
+}
+
+pigeon = birds["Pigeon"]
+parrot = birds["Parrot"]
+
+mapping = new Mapping {
+  ["number"] = 42
+  ["list"] = List("Pigeon", "Parrot")
+  ["nested mapping"] {
+    ["Pigeon"] {
+      lifespan = 20
+      diet = "Seeds"
+    }
+  }
+}
+
+mapping = new Mapping {
+  [3.min] = 42
+  [new Dynamic { name = "Pigeon" }] = "abc"
+}
+
+mapping = new Mapping {
+  ["Pigeon".reverse()] = 42
+}
+
+mapping = new Mapping {
+  local parrot = "Parrot"
+  ["Pigeon"] {
+    friend = parrot
+  }
+}
+
+birds = new Mapping {
+  ["Pigeon"] {
+    lifespan = 8
+    diet = "Seeds"
+  }
+  ["Parrot"] {
+    lifespan = 20
+    diet = "Berries"
+  }
+}
+
+birds2 = (birds) {
+  ["Barn owl"] {
+    lifespan = 15
+    diet = "Mice"
+  }
+  ["Pigeon"] {
+    diet = "Seeds"
+  }
+  ["Parrot"] = new {
+    lifespan = 20
+    diet = "Berries"
+  }
+}
+
+birds = new Mapping {
+  ["Pigeon"] {
+    lifespan = 8
+    diet = "Seeds"
+  }
+  ["Parrot"] = (this["Pigeon"]) {
+    lifespan = 20
+  }
+}
+
+birds2 = (birds) {
+  ["Pigeon"] {
+    diet = "Seeds"
+  }
+}
+
+parrotDiet = birds2["Parrot"].diet
+
+result = birds
+  .toMap()
+  .mapKeys((key, value) -> key.reverse())
+  .toMapping()
+
+birds = new Mapping {
+  default {
+    lifespan = 8
+  }
+  ["Pigeon"] {
+    diet = "Seeds"
+  }
+  ["Parrot"] {
+    lifespan = 20
+  }
+}
+
+x: Mapping<KeyType, ValueType>
+
+class Bird {
+  lifespan: Int
+}
+
+birds: Mapping<String, Bird>
+
+class Bird {
+  name: String
+  hidden taxonomy: Taxonomy
+}
+
+class Taxonomy {
+  `species`: String
+}
+
+pigeon: Bird = new {
+  name = "Common wood pigeon"
+  taxonomy {
+    species = "Columba palumbus"
+  }
+}
+
+pigeonClass = pigeon.getClass()
+
