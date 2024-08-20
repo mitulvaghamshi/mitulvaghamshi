@@ -1,0 +1,195 @@
+<style>
+  :root {
+    font-size: 1vh;
+    height: 100em;
+
+    background:
+      /* hand */
+      linear-gradient(#fff 0 0) 47.5em 58.5em / 2.5em 9em no-repeat,
+      radial-gradient(3.5em 5em at 46.25em 55.5em, #fca 0.5em, #0000 0),
+      linear-gradient(45deg, #0000 30%, #fca 0 50%, #0000 0) 46.25em 53.75em / 3em 5em no-repeat,
+      linear-gradient(#fca 0 0) 47.875em 55.5em / 1.75em 5em no-repeat,
+      radial-gradient(circle at 49em 56.5em, #fca 1.7em, #0000 0),
+      radial-gradient(circle at 47.75em 51.75em, #fca 0.5em, #0000 0),
+      radial-gradient(circle at 48.95em 51.75em, #fca 0.5em, #0000 0),
+      radial-gradient(circle at 50.15em 52.75em, #fca 0.5em, #0000 0),
+      linear-gradient(#fca 0 0) 47.25em 51.75em / 1em 4em no-repeat,
+      linear-gradient(#fca 0 0) 48.45em 51.75em / 1em 4em no-repeat,
+      linear-gradient(#fca 0 0) 49.65em 52.75em / 1em 3em no-repeat,
+
+      /* person */
+      /* hair front */
+      radial-gradient(circle at 40em 47.0em, #963 1.2em, #0000 0),
+      radial-gradient(circle at 38em 47.0em, #963 1.0em, #0000 0),
+      radial-gradient(circle at 42em 47.0em, #963 1.1em, #0000 0),
+      /* eyes */
+      radial-gradient(circle at 38.1em 51em, #fff 0.25em, #0000 0),
+      radial-gradient(circle at 41.3em 51em, #fff 0.25em, #0000 0),
+      radial-gradient(circle at 38.4em 51.25em, #000 0.75em, #0000 0),
+      radial-gradient(circle at 41.6em 51.25em, #000 0.75em, #0000 0),
+      /* eyebrows */
+      radial-gradient(40% 50% at 70% 100%, #0000 calc(100% - 0.5em), #963 0 99%, #0000) 35.8em 48.75em / 3.2em 1.25em no-repeat,
+      radial-gradient(40% 50% at 30% 100%, #0000 calc(100% - 0.5em), #963 0 99%, #0000) 41.0em 48.75em / 3.2em 1.25em no-repeat,
+      /* nose */
+      radial-gradient(40% 75% at 50% 0, #da8 99%, #0000) 39.175em 52.75em / 1.75em 0.75em no-repeat,
+      /* mouth */
+      linear-gradient(#fff 0 0) 38.5em 54em / 3em 0.25em no-repeat,
+      radial-gradient(40% 75% at 50% 0, #0000 99%, #fca) 38em 54em / 4em 1.75em no-repeat,
+      radial-gradient(40% 50% at 50% 100%, #f00 99%, #0000) 38em 54em / 4em 1.75em no-repeat,
+      linear-gradient(#700 0 0) 38.25em 54em / 3.5em 1.5em no-repeat no-repeat,
+      /* face */
+      radial-gradient(10em 12.5em at 40em 51.5em, #fca 4em, #0000 0),
+
+      /* ears */
+      radial-gradient(circle at 36.2em 52em, #eb9 1.5em, #0000 0),
+      radial-gradient(circle at 43.8em 52em, #eb9 1.5em, #0000 0),
+      /* hair back */
+      radial-gradient(circle at 40em 46.5em, #963 2.0em, #0000 0),
+      radial-gradient(circle at 38em 47.0em, #963 1.5em, #0000 0),
+      radial-gradient(circle at 42em 47.3em, #963 1.5em, #0000 0),
+      radial-gradient(circle at 43.2em 48.5em, #963 1.2em, #0000 0),
+      radial-gradient(circle at 36.6em 48.3em, #963 1.2em, #0000 0),
+      radial-gradient(circle at 43.6em 50.2em, #963 1.2em, #0000 0),
+      radial-gradient(circle at 36.4em 50.0em, #963 1.0em, #0000 0),
+      /* collar */
+      conic-gradient(at -250% 0%, #0000 105deg, #cde 0 115deg, #0000 0) 37.75em 55.5em / 2em 4em no-repeat,
+      conic-gradient(at 350% 0%, #0000 245deg, #cde 0 255deg, #0000 0) 40.25em 55.5em / 2em 4em no-repeat,
+      /* belt buckle */
+      linear-gradient(silver 0 0) 40.225em 70.25em / 0.75em 0.25em no-repeat,
+      linear-gradient(#531 0 0) 38.75em 69.6em / 2.5em 1.5em no-repeat,
+      linear-gradient(silver 0 0) 38.5em 69.35em / 3em 2em no-repeat,
+      /* body */
+      radial-gradient(circle at 39.95em 60em, #0003 0.25em, #0000 0),
+      radial-gradient(circle at 39.95em 62em, #0003 0.25em, #0000 0),
+      radial-gradient(circle at 39.95em 64em, #0003 0.25em, #0000 0),
+      radial-gradient(circle at 39.95em 66em, #0003 0.25em, #0000 0),
+      radial-gradient(circle at 39.95em 68em, #0003 0.25em, #0000 0),
+      radial-gradient(circle at 39.95em 70em, #0003 0.25em, #0000 0),
+      linear-gradient(#fff 69%, #531 0 77%, #369 0) 36em 58em / 8em 17em no-repeat,
+      /* shoulders */
+      radial-gradient(circle at 36.66em 60em, #fff 2em, #0000 0),
+      radial-gradient(circle at 43.32em 60em, #fff 2em, #0000 0),
+      /* pants */
+      linear-gradient(#369 0 0) 36em 75em / 2.5em 15.5em no-repeat,
+      linear-gradient(#369 0 0) 41.5em 75em / 2.5em 15.5em no-repeat,
+
+      /* shoes */
+      radial-gradient(farthest-side at 100% 100%, #000 99%, #0000) 33em 90.25em / 5.5em 2.25em no-repeat,
+      radial-gradient(farthest-side at 0% 100%, #000 99%, #0000) 41.5em 90.25em / 5.5em 2.25em no-repeat,
+      /* arm 1 */
+      linear-gradient(60deg, #0000 30%, #fff 0 48%, #0000 0) 42.75em 59em / 10em 8em no-repeat,
+      /* arm 2 */
+      linear-gradient(#0001 0 0) 35.75em 59em / 1em 7em no-repeat,
+      linear-gradient(100deg, #0000 30%, #fff 0 48%, #0000 0) 31em 59em / 10em 15em no-repeat,
+      linear-gradient(#fca 0 0) 32.5em 73.5em / 1.5em 2em no-repeat,
+      radial-gradient(circle at 33em 76em, #fca 1.75em, #0000 0),
+      /* neck */
+      linear-gradient(#eb9 0 0) 39em 52em / 2em 7em no-repeat,
+
+      /* plant */
+      radial-gradient(circle at 10em 0em, #fff 8em, #0000 0) 5em 86em / 173em 7em repeat-x,
+
+      linear-gradient(90deg, #ffc7 1.5em, #0000 0) 16em 73em / 346em 0.25em repeat-x,
+      linear-gradient(90deg, #ffc7 1.5em, #0000 0) 16em 63em / 346em 0.25em repeat-x,
+      linear-gradient(90deg, #ffc8 1.5em, #0000 0) 16em 83em / 346em 0.25em repeat-x,
+      linear-gradient(90deg, green 1.5em, #0000 0) 16em 53em / 346em 40em repeat-x,
+
+      linear-gradient(90deg, #ffc7 1.5em, #0000 0) 14em 81em / 173em 0.25em repeat-x,
+      linear-gradient(90deg, #ffc7 1.5em, #0000 0) 14em 68em / 173em 0.25em repeat-x,
+      linear-gradient(90deg, green 1.5em, #0000 0) 14em 63em / 173em 30em repeat-x,
+
+      linear-gradient(90deg, #ffc8 1.5em, #0000 0) 12em 84em / 173em 0.25em repeat-x,
+      linear-gradient(90deg, #ffc8 1.5em, #0000 0) 12em 75em / 173em 0.25em repeat-x,
+      linear-gradient(90deg, #ffc8 1.5em, #0000 0) 12em 64em / 173em 0.25em repeat-x,
+
+      linear-gradient(90deg, green 1.5em, #0000 0) 12em 57em / 173em 36em repeat-x,
+      radial-gradient(5em 3em at 10.25em 100%, green 2em, #0000 0) 0em 47em / 173em 26em repeat-x,
+      radial-gradient(7em 4em at 10em 100%, green 2.5em, #0000 0) 173em 38em / 346em 26em repeat-x,
+      radial-gradient(7em 4em at 19.5em 100%, green 2.5em, #0000 0) 0 30em / 692em 26em repeat-x,
+      /* table */
+      linear-gradient(90deg, #fb9 35em, #ea8 0 60em, #0000 0) 115em 69em / 177em 2em repeat-x,
+      linear-gradient(80deg, #0000 40em, #222 0 41.5em, #0000 0 57em, #000 0 58.5em, #0000 0) 115em 71em / 177em 20em repeat-x,
+      linear-gradient(90deg, #0000 2em, #222 0, #000 18em, #0000 0) 115em 87em / 177em 1.125em repeat-x,
+      linear-gradient(90deg, #0000 41em, #222 0, #000 58em, #0000 0) 115em 87em / 177em 1.125em repeat-x,
+      linear-gradient(100deg, #0000 4em, #222 0 5.5em, #0000 0 20em, #000 0 21.5em, #0000 0) 115em 71em / 177em 20em repeat-x,
+      linear-gradient(140deg, #0000 19em, #000 0 19.5em, #0000 0) 115em 71em / 177em 17em repeat-x,
+      linear-gradient(40deg, #0000 32em, #000 0 32.5em, #0000 0) 115em 71em / 177em 17em repeat-x,
+      /* things on the table */
+      linear-gradient(65deg, pink 4em, #0000 0) 129em 68em / 531em 3em repeat-x,
+      linear-gradient(90deg, #68c 3em, #47b 0 5em, #0000 0) 123em 62em / 354em 9em repeat-x,
+      linear-gradient(80deg, #0000 2em, #fb2 0 3em, #0000 0) 123em 59em / 354em 12em repeat-x,
+      /* flexo */
+      radial-gradient(circle at 35em 100%, #000 3.5em, #0000 0) 115em 60em / 177em 10em repeat-x,
+      radial-gradient(circle at 30.5em 10%, #000 1em, #0000 0) 115em 60em / 177em 10em repeat-x,
+      linear-gradient(55deg, #0000 0 29.75em, #000 0 31em, #0000 0) 115em 61em / 177em 9em repeat-x,
+      linear-gradient(145deg, #0000 0 29.75em, #000 0 30.25em, #0000 0 30.5em, #000 0 31em, #0000 0) 101.25em 55em / 177em 6em repeat-x,
+      radial-gradient(60em 40em at 35em 100%, #000 3.5em, #0000 0) 121em 45em / 177em 10em repeat-x,
+      radial-gradient(30em 20em at 35em 0%, #ffcc 1.5em, #0000 0) 122em 54.75em / 177em 10em repeat-x,
+      /* notes */
+      linear-gradient(90deg, #ffc 4em, #0000 0) 135em 58em / 249em 4em repeat-x,
+      linear-gradient(90deg, pink 4em, #0000 0) 133em 60em / 498em 4em repeat-x,
+      linear-gradient(90deg, #ffc 4em, #0000 0) 145em 61em / 747em 4em repeat-x,
+      linear-gradient(90deg, #8ff 4em, #0000 0) 145em 56em / 249em 4em repeat-x,
+      linear-gradient(90deg, pink 4em, #0000 0) 150em 58.5em / 996em 4em repeat-x,
+      /* cubicle front */
+      linear-gradient(90deg, #0000 63.5em, #0122 0 127em, #0000 0) 105em 48em / 249em 37em repeat-x,
+      linear-gradient(90deg, #8cd 125em, #0000 0) 106em 49em / 249em 35em repeat-x,
+      linear-gradient(90deg, #fff 127em, #0000 0) 105em 48em / 249em 37em repeat-x,
+      linear-gradient(90deg, #0000 10em, #000 0 11em, #0000 0 25em, #000 0 26em, #0000 0 40em, #000 0 41em, #0000 0 55em, #000 0 56em, #0000 0 70em, #000 0 71em, #0000 0 85em, #000 0 86em, #0000 0 100em, #000 0 101em, #0000 0 115em, #000 0 116em, #0000 0) 105em 50em / 249em 36.5em repeat-x,
+      /* archive */
+      linear-gradient(90deg, #000c 8.5em, #0000 0) 97.5em 71em / 249em 0.125em repeat-x,
+      linear-gradient(90deg, #000c 8.5em, #0000 0) 97.5em 77em / 249em 0.125em repeat-x,
+      linear-gradient(90deg, #47b 7em, #369 0 15em, #0000 0) 91em 65.5em / 249em 20em repeat-x,
+      radial-gradient(circle at 93em 50%, #000 1em, #0000 0) 0 76em / 249em 20em repeat-x,
+      radial-gradient(circle at 104em 50%, #000 1em, #0000 0) 0 76em / 249em 20em repeat-x,
+      radial-gradient(circle at 98em 50%, #000 1em, #0000 0) 0 76em / 249em 20em repeat-x,
+      /* cubicles back */
+      linear-gradient(90deg, #8cd 68em, #0000 0) -54em 44em / 200em 35em repeat-x,
+      linear-gradient(90deg, #fff 70em, #0000 0) -55em 43em / 200em 37em repeat-x,
+      linear-gradient(90deg, #0000 10em, #000 0 11em, #0000 0 27em, #000 0 28em, #0000 0 45em, #000 0 46em, #0000 0 60em, #000 0 61em, #0000 0) -55em 45em / 200em 36.5em repeat-x,
+      /* ceiling */
+      linear-gradient(#aac 0 0) 0 0 / 100% 7.5em repeat-x,
+      /* floor */
+      linear-gradient(#8ac, #579) 0 100% / 100% 30em repeat-x,
+      /* water fountain */
+      linear-gradient(90deg, #d44 1em, #0000 0) 357.5em 55em / 300em 0.5em repeat-x,
+      linear-gradient(90deg, #66f 1em, #0000 0) 359.5em 55em / 300em 0.5em repeat-x,
+      linear-gradient(90deg, #eee 4em, #0000 0) 357em 55em / 300em 5em repeat-x,
+      linear-gradient(90deg, #8cf5 6em, #0000 0) 356em 43em / 300em 10em repeat-x,
+      linear-gradient(90deg, #fff 6em, #0000 0) 356em 100% / 300em 47em repeat-x,
+      linear-gradient(90deg, #8ff8 5em, #0000 0) 356.5em 100% / 300em 50em repeat-x,
+      /* columns */
+      linear-gradient(90deg, #88a 3.5em, #99b 0 7em, #0000 0) 60em 0 / 100em,
+      /* ceiling lights */
+      linear-gradient(30deg, #0000 20%, #fff 0 80%, #0000 0) -20em 12em / 60em 1.5em repeat-x,
+      /* switch */
+      linear-gradient(90deg, #f0f8ff 1.5em, #0000 0) -149.25em 48em / 126em 3em repeat-x,
+      linear-gradient(90deg, #fff 3em, #0000 0) -150em 47em / 126em 5em repeat-x,
+      /* painting 1 */
+      conic-gradient(at 5em 30%, #0000 180deg, pink 0, mediumseagreen, skyblue) -170.5em 39.5em / 252em 10em repeat-x,
+      linear-gradient(90deg, #fff 8em, #0000 0) -172em 38em / 252em 13em repeat-x,
+      linear-gradient(90deg, #369 10em, #0000 0) -173em 37em / 252em 15em repeat-x,
+      /* painting 2 */
+      linear-gradient(90deg, #000 5em, #0000 0) -32em 41.5em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #888 5em, #0000 0) -32em 43em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #888 5em, #0000 0) -32em 44em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #888 3em, #0000 0) -32em 45em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #888 5em, #0000 0) -32em 46em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #888 5em, #0000 0) -32em 47em / 378em 0.5em repeat-x,
+      linear-gradient(90deg, #fff 7em, #0000 0) -33em 40em / 378em 10em repeat-x,
+      linear-gradient(90deg, #963 9em, #0000 0) -34em 39em / 378em 12em repeat-x,
+      /* door */
+      radial-gradient(circle at 15.5em 35%, #bcd 1.25em, #0000 0) -18em 100% / 126em 70em repeat-x,
+      linear-gradient(90deg, #def 13em, #0000 0) -14.5em 34em / 126em 18em repeat-x,
+      linear-gradient(90deg, #9090a8 17em, #0000 0) -16.5em 100% / 126em 68.5em repeat-x,
+      linear-gradient(90deg, #bcd 20em, #0000 0) -18em 100% / 126em 70em repeat-x,
+      /* back wall */
+      linear-gradient(#bcd 17.5em, #69c 0 20em, #eef 0 25%, #0000 0),
+      linear-gradient(90deg, #0000 50%, #eef 0) 10em 0 / 126em 100%,
+      linear-gradient(#69c 27%, #0000 0),
+      linear-gradient(-45deg, #8cf2 40%, #fff3 0 41%, #8cf2 0 42%, #fff3 0 46%, #8cf2 0) 0 0 / 58em 70em,
+      repeating-linear-gradient(90deg, #0000 0 16.66%, #000 0 17%) 10em 0 / 126em 100% repeat-x,
+      /* base color */
+      #36f2;
+  }
+</style>
