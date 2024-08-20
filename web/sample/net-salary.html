@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!---
+Basic operation:
+1. Take gross salary from user.
+2. Apply deductions as EI, CPP and IncomeTex as percentages.
+3. Add Bonus and Allowance in dollars from users.
+4. Apply deduction of 1% IncomeTex for female only.
+5. Apply conditions on dependants as:
+   - 2 dependants no deductions in IncomeTex.
+   - 3 dependants deduction of 2.
+   - 4 dependants deduction of 4.
+
+References:
+- [wealthsimple.com](https://www.wealthsimple.com/en-ca/tool/tax-calculator/ontario)
+- [filingtaxes.ca](https://filingtaxes.ca/why-are-bonuses-taxed-so-high-in-ontario)
+- [canada.ca - ei](https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/employment-insurance-ei/ei-premium-rates-maximums.html)
+- [canada.ca - cpp](https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/checking-amount-cpp-you-deducted.html)
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Slip</title>
+    <style>
+        body {
+            margin: auto;
+            padding: 16px;
+            text-align: center;
+        }
+
+        input,
+        button,
+        select {
+            border: none;
+            min-width: 300px;
+            border-radius: 8px;
+            outline: 1px solid;
+            vertical-align: middle;
+        }
+
+        input,
+        label,
+        button,
+        select {
+            display: block;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        label {
+            padding: 0;
+            text-align: start;
+        }
+
+        button {
+            width: 330px;
+            color: white;
+            background-color: #4169e1;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: #7daaff;
+        }
+
+        select {
+            width: 320px;
+        }
+
+        input[type="text"] {
+            background-color: #dcdcdc;
+        }
+
+        #container {
+            margin: auto;
+            width: max-content;
+            text-align: center;
+        }
+
+
+        @media screen and (max-width: 400px) {
+
+            input,
+            label {
+                width: auto;
+                min-width: 250px;
+            }
+
+            button,
+            select {
+                width: auto;
+                min-width: 265px;
+            }
+        }
+
+        @media screen and (min-width: 640px) {
+            label {
+                text-align: start;
+            }
+
+            label,
+            input {
+                width: 500px;
+                display: inline-block;
+            }
+
+            button,
+            select {
+                width: 520px;
+                display: inline-block;
+            }
+
+            #container {
+                width: 550px;
+            }
+        }
+
+        @media screen and (min-width: 740px) {
+            label {
+                text-align: end;
+            }
+
+            label,
+            input {
+                width: 300px;
+                display: inline-block;
+            }
+
+            button,
+            select {
+                width: 320px;
+                display: inline-block;
+            }
+
+            #container {
+                width: 700px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Salary Slip</h1>
+        <hr>
+        <form action="#" name="salary-form">
+            <!-- Take gross salary from user. -->
+            <label for="input-salary">What is your gross salary:</label>
+            <input id="input-salary" id="input-salary" name="input-salary" type="number" placeholder="Enter gross salary (required)" required pattern="\d+\.?\d+?" />
+
+            <!-- Not in use. -->
+            <label for="input-weeks">Number of weeks (<span id="weeks">52</span>):</label>
+            <input id="input-weeks" name="input-weeks" type="range" min="1" max="52" step="1" value="52" oninput="weeks.innerText=this.value" />
+
+            <!-- Add Bonus and Allowance in dollars from users. -->
+            <label for="input-bonus">Enter bonus received:</label>
+            <input id="input-bonus" name="input-bonus" type="number" required placeholder="Enter bonus amount (required)" pattern="\d+\.?\d+?" />
+            <label for="input-allowance">How much allowance:</label>
+            <input id="input-allowance" name="input-allowance" type="number" required placeholder="Enter allowance (required)" pattern="\d+\.?\d+?" />
+
+            <!-- Apply deductions as EI, CPP and IncomeTex as percentages. -->
+            <label for="input-tax">Total tax (fed + prov):</label>
+            <input id="input-tax" name="input-tax" type="text" placeholder="Tax (Federal + Provincial)" readonly />
+            <label for="input-cpp">CPP deductions:</label>
+            <input id="input-cpp" name="input-cpp" type="text" placeholder="CPP deductions" readonly />
+            <label for="input-ei">EI deductions:</label>
+            <input id="input-ei" name="input-ei" type="text" placeholder="EI deductions" readonly />
+
+            <!-- salary after tax -->
+            <label for="input-salary-after-tax">Salary after tax: </label>
+            <input id="input-salary-after-tax" name="input-salary-after-tax" type="text" readonly placeholder="Salary after tax" />
+
+            <!-- Apply deduction of 1% IncomeTex for female only. -->
+            <label for="input-gender">Select your gender:</label>
+            <select id="select-gender" name="select-gender" required>
+                <option value="0" selected>Male (0% tax relief)</option>
+                <option value="1">Female (1% tax relief)</option>
+            </select>
+
+            <!-- Apply deduction on IncomeTax based on number of dependants. -->
+            <label for="input-dependants">Number of dependants:</label>
+            <select id="select-dependants" name="select-dependants">
+                <!-- If (2 dependants) -> no-deductions. -->
+                <option value="0">2 or none (no tax relief)</option>
+                <!-- If (3 dependants) -> deduction of 2%. -->
+                <option value="2">3 only (2% relief)</option>
+                <!-- If (4 dependants) -> deduction of 4%. -->
+                <option value="4">4 or more (4% relief)</option>
+            </select>
+
+            <!-- Net salary. -->
+            <label for="input-total">Your net salary + Benefits: </label>
+            <input id="input-total" name="input-total" type="text" readonly placeholder="Final salary..." />
+            <hr>
+
+            <!-- Let's calculate -->
+            <button id="input-calculate" name="input-calculate" type="button">Calculate</button>
+        </form>
+    </div>
+    <script>
+        const salaryElement = document.getElementById("input-salary");
+        const weeksElement = document.getElementById("input-weeks");
+        const bonusElement = document.getElementById("input-bonus");
+        const allowanceElement = document.getElementById("input-allowance");
+        const taxElement = document.getElementById("input-tax");
+        const cppElement = document.getElementById("input-cpp");
+        const eiElement = document.getElementById("input-ei");
+        const salaryAfterTax = document.getElementById("input-salary-after-tax");
+        const genderElement = document.getElementById("select-gender");
+        const dependantsElement = document.getElementById("select-dependants");
+        const totalElement = document.getElementById("input-total");
+        const calculateElement = document.getElementById("input-calculate");
+
+        const scaleUp = { transform: "scale(1)" };
+        const scaleDown = { transform: "scale(0.9)" };
+        const scale = [scaleUp, scaleDown, scaleDown, scaleUp];
+        const duration = { duration: 300, iterations: 2 };
+        const animate = ({ target }) => target.animate(scale, duration);
+
+        salaryElement.oninvalid = animate;
+        bonusElement.oninvalid = animate;
+        allowanceElement.oninvalid = animate;
+
+        calculateElement.onclick = _ => {
+            const form = document.forms.namedItem('salary-form');
+            if (form.checkValidity()) {
+                const weeks = weeksElement.value;
+                const grossSalary = validate(salaryElement);
+                const bonus = validate(bonusElement);
+                const allowance = validate(allowanceElement);
+
+                if (weeks && grossSalary && bonus >= 0 && allowance >= 0) {
+                    const result = calculate(grossSalary + bonus + allowance);
+                    taxElement.value = `\$${result.totalTax.toFixed(2)}`;
+                    cppElement.value = `\$${result.cppDeductions.toFixed(2)}`;
+                    eiElement.value = `\$${result.eiDeductions.toFixed(2)}`;
+                    salaryAfterTax.value = `\$${result.afterTaxIncome.toFixed(2)}`;
+
+                    let finalSalary = result.afterTaxIncome;
+                    finalSalary *= (1 + genderElement.value / 100);
+                    finalSalary *= (1 + dependantsElement.value / 100);
+                    totalElement.value = `\$${finalSalary.toFixed(2)}`;
+                }
+            } else {
+                console.warn("Form state: Invalid");
+            }
+        };
+
+        const validate = element => {
+            try {
+                const value = parseFloat(element.value);
+                if (!isNaN(value) && value >= 0) return value;
+            } catch {
+                element.animate(scale, duration);
+                element.value = "";
+                return false;
+            }
+        }
+
+        const calculate = salary => {
+            let f_tax = 0;
+            let p_tax = 0;
+            let s_tax = 0;
+
+            const eiDeductions = Math.max(0, Math.min(salary, 61500)) * 0.0158;
+            const cpp_premiums = (Math.max(0, Math.min(salary, 66600) - 3500) * 0.163) / 2;
+            const cpp_deduction = Math.max(0, Math.min(salary, 66600) - 3500) * 0.0075;
+            const cppDeductions = cpp_premiums + eiDeductions;
+            const payroll_tax_credits = cpp_premiums - cpp_deduction + eiDeductions;
+            const income = salary + cpp_deduction;
+
+            // Federal Tax
+            if (income <= 50197) {
+                f_tax = income * 0.15;
+            } else if (income <= 100392) {
+                f_tax = (income - 50197) * 0.205 + 7529.55;
+            } else if (income <= 155625) {
+                f_tax = (income - 100392) * 0.26 + 17819.53;
+            } else if (income <= 221708) {
+                f_tax = (income - 155625) * 0.29 + 32180.11;
+            } else {
+                f_tax = (income - 221708) * 0.33 + 51344.18;
+            }
+
+            let fed_bpa = 12719;
+            if (income < 155625) {
+                fed_bpa += 1679;
+            } else if (income < 221708) {
+                fed_bpa += 1679 - (income - 155625) * 0.025407442;
+            }
+            f_tax = Math.max(f_tax - (fed_bpa + Math.min(1287, salary) + payroll_tax_credits) * 0.15, 0);
+
+            // Provincial Tax
+            if (income <= 46226) {
+                p_tax = income * 0.0505;
+            } else if (income <= 92454) {
+                p_tax = (income - 46226) * 0.0915 + 2334.41;
+            } else if (income <= 150000) {
+                p_tax = (income - 92454) * 0.1116 + 6564.28;
+            } else if (income <= 220000) {
+                p_tax = (income - 150000) * 0.1216 + 12986.41;
+            } else {
+                p_tax = (income - 220000) * 0.1316 + 21498.41;
+            }
+            p_tax = Math.max(p_tax - (11141 + payroll_tax_credits) * 0.0505, 0);
+
+            /* ON Surtax */
+            if (p_tax >= 6387) {
+                s_tax = (p_tax - 4991) * 0.2 + (p_tax - 6387) * 0.36;
+            } else if (p_tax >= 4991) {
+                s_tax = (p_tax - 4991) * 0.2;
+            } else {
+                s_tax = 0;
+            }
+
+            /* ON DTC After Surtax */
+            p_tax += s_tax;
+
+            // Ontario Health Premium
+            let on_health = 0;
+            if (income > 200600) {
+                on_health = 900;
+            } else if (income > 200000) {
+                on_health = (income - 200000) * 0.25 + 750;
+            } else if (income > 72600) {
+                on_health = 750;
+            } else if (income > 72000) {
+                on_health = (income - 72000) * 0.25 + 600;
+            } else if (income > 48600) {
+                on_health = 600;
+            } else if (income > 48000) {
+                on_health = (income - 48000) * 0.25 + 450;
+            } else if (income > 38500) {
+                on_health = 450;
+            } else if (income > 36000) {
+                on_health = (income - 36000) * 0.06 + 300;
+            } else if (income > 25000) {
+                on_health = 300;
+            } else if (income > 20000) {
+                on_health = (income - 20000) * 0.06 + 0;
+            }
+            p_tax += on_health;
+
+            const totalTax = f_tax + p_tax + cppDeductions + 0;
+            const afterTaxIncome = salary - totalTax;
+            return { totalTax, cppDeductions, eiDeductions, afterTaxIncome };
+        };
+    </script>
+</body>
+
+</html>
