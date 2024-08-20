@@ -1,0 +1,24 @@
+name: gstore
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.4
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+  - assets/nest.webp
+  - assets/pixels.webp
+  - assets/google-logo.webp
+  - assets/nest-home-packages.webp
+  - assets/nest-audio-packages.webp
