@@ -1,0 +1,61 @@
+/* parent container */
+.root {
+    -fx-background-color: #1e90ff;
+}
+
+/* question label */
+.question {
+    -fx-padding: 10px;
+    -fx-font: 45 gabriola;
+    -fx-pref-width: 940;
+    -fx-pref-height: 250;
+    -fx-alignment: CENTER;
+    -fx-background-color: #704214;
+}
+
+/* default button and label */
+.button, .label {
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+/* button hover effect */
+.button:hover {
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+}
+
+/* label hover effect */
+.label:hover {
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffa500;
+}
+
+/* true/false buttons */
+.btn {
+    -fx-padding: 20px;
+    -fx-pref-height: 50px;
+    -fx-pref-width: 300px;
+    -fx-font: 35 "Serif";
+    -fx-font-weight: bold;
+}
+
+/* true/false signed labels */
+.sign {
+    -fx-padding: 15px;
+    -fx-font: 35 courier;
+}
+
+/* true button and label */
+.true {
+    -fx-background-color: #03c03c;
+}
+
+/* false button and label */
+.false {
+    -fx-background-color: #ff4f00;
+}

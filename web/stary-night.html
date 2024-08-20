@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stary Night</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --font-color: #212121;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --font-color: #f8f8ff;
+            }
+        }
+
+        #board {
+            width: calc(100vw - 20px);
+            height: calc(100vh - 20px);
+        }
+
+        #shootingStar {
+            fill: var(--font-color);
+            animation: shooting 5s ease-in-out forwards;
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: rotateZ(-45deg);
+            }
+
+            100% {
+                transform: translate(100%, 50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <svg id="board" width="90%" height="90%">
+            <circle id="shootingStar" cx="100" cy="100" r="2.5" />
+        </svg>
+    </main>
+    <script>
+        onload = () => {
+            // Generate stars for the night effect
+            const xmlNS = 'http://www.w3.org/2000/svg'
+            for (i = 0; i < 500; i++) {
+                const dot = document.createElementNS(xmlNS, 'circle');
+                dot.setAttribute('id', `circle-${i}`);
+                dot.setAttribute('style', 'fill:var(--font-color)');
+                dot.setAttribute('r', Math.random());
+                dot.setAttribute('cx', Math.random() * window.innerWidth);
+                dot.setAttribute('cy', Math.random() * window.innerHeight);
+                board.appendChild(dot);
+            }
+        };
+    </script>
+    <script>
+        // let startcount = 0;
+
+        // /**
+        //  * Identify and remove collected star, and update the score.
+        //  * @param id for which star is collected
+        //  */
+        // const collectedStars = id => {
+        //     const star = document.getElementById(id);
+        //     board.removeChild(star);
+        //     score.innerHTML = `Collected Stars: ${++startcount}`;
+        // };
+
+        // /* Prepare and draw random stars which has to be collected. */
+        // const drawGame = () => {
+        //     star.style.display = 'block';
+        //     // Generate 30 stars
+        //     for (i = 0; i < 30; i++) {
+        //         const star = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        //         // Draw the stars by the reference of id star which is the polygon
+        //         star.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#star');
+        //         star.setAttribute('onclick', `collectedStars('poly-${i}')`);
+        //         star.setAttribute('id', `poly-${i}`);
+        //         star.setAttribute('fill', 'gold');
+        //         star.setAttribute('x', Math.abs(Math.random() * window.innerWidth));
+        //         star.setAttribute('y', Math.abs(Math.random() * window.innerHeight));
+        //         board.appendChild(star);
+        //     }
+
+        //     let timeLimit = 50;
+        //     const timerId = setInterval(() => {
+        //         if (timeLimit-- == 0) {
+        //             clearTimeout(timerId);
+        //             star.style.display = 'none';
+        //             time.innerHTML = 'Time Over';
+        //         } else {
+        //             time.innerHTML = `${timeLimit} seconds remaining`;
+        //         }
+        //     }, 1000);
+        // }
+
+        // <svg id="board" width="90%" height="90%">
+        //     <defs>
+        //         <svg id="star" viewbox="0 0 50 50" x="0" y="0" width="30" height="30">
+        //             <polygon points="24 36 10 44 12 28 1 17 17 15 24 1 30 15 46 17 35 28 37 44" />
+        //         </svg>
+        //     </defs>
+        // </svg>
+    </script>
+</body>
+
+</html>
