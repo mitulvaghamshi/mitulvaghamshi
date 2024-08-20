@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- https://www.w3schools.com/graphics/canvas_clock.asp -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock | Html Canvas</title>
+    <style>
+        :root {
+            color-scheme: dark light;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock"></div>
+</body>
+<script>
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.visualViewport.height;
+    canvas.width = window.visualViewport.width;
+    canvas.style.backgroundColor = "#333";
+    clock.appendChild(canvas);
+
+    let redius = canvas.height / 2;
+    ctx.translate(redius, redius);
+    redius *= 0.9;
+
+    // setInterval(drawClock, 1000);
+    drawClock();
+
+    function drawClock() {
+        ctx.arc(0, 0, redius, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        drawFace(ctx, redius);
+        drawDigits(ctx, redius);
+        drawTime(ctx, redius);
+    }
+
+    function drawFace(ctx, redius) {
+        const grad = ctx.createRadialGradient(0, 0, redius * 0.95, 0, 0, redius * 1.05);
+        grad.addColorStop(0, "#333");
+        grad.addColorStop(0.5, "white");
+        grad.addColorStop(1, "#333");
+
+        ctx.beginPath();
+        ctx.arc(0, 0, redius, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = redius * 0.1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(0, 0, redius * 0.1, 0, Math.PI * 2);
+        ctx.fillStyle = "#333";
+        ctx.fill();
+    }
+
+    function drawDigits(ctx, redius) {
+        ctx.font = redius * 0.15 + "px georgia";
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        for (let digit = 1; digit <= 12; digit++) {
+            let angle = digit * Math.PI / 6;
+            ctx.rotate(angle);
+            ctx.translate(0, -redius * 0.85);
+            ctx.rotate(-angle);
+            ctx.fillText(digit.toString(), 0, 0);
+            ctx.rotate(angle);
+            ctx.translate(0, redius * 0.85);
+            ctx.rotate(-angle);
+        }
+    }
+
+    function drawTime(ctx, radius) {
+        const now = new Date();
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
+
+        // Hour
+        hour = hour % 12;
+        hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
+        drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+
+        // Minute
+        minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+        drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+
+        // Second
+        second = second * Math.PI / 30;
+        drawHand(ctx, second, redius * 0.9, redius * 0.02);
+    }
+
+    function drawHand(ctx, position, length, width) {
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.rotate(position);
+        ctx.lineTo(0, -length);
+        ctx.stroke();
+        ctx.rotate(-position);
+    }
+</script>
+
+</html>
