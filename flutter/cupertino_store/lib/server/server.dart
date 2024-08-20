@@ -1,0 +1,295 @@
+import 'package:cupertino_store/models/product.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+
+enum Category { all, home, clothing, accessories }
+
+@immutable
+mixin Server {
+  static int availableProducts = _products.length;
+
+  static Product getProduct(int id) => _products.singleWhere((p) => p.id == id);
+
+  static Iterable<Product> filter(Category category, String term) {
+    final products = category == .all
+        ? _products
+        : _products.where((p) => p.category == category);
+
+    if (term.isEmpty) products;
+
+    return products.where(
+      (p) => p.name.toLowerCase().contains(term.toLowerCase()),
+    );
+  }
+}
+
+final format = NumberFormat.simpleCurrency();
+
+const _products = [
+  Product(
+    id: 0,
+    name: 'Vagabond sack',
+    price: 120,
+    isFeatured: true,
+    category: .accessories,
+  ),
+  Product(
+    id: 1,
+    name: 'Stella sunglasses',
+    price: 58,
+    isFeatured: true,
+    category: .accessories,
+  ),
+  Product(
+    id: 2,
+    name: 'Whitney belt',
+    price: 35,
+    isFeatured: false,
+    category: .accessories,
+  ),
+  Product(
+    id: 3,
+    name: 'Garden strand',
+    price: 98,
+    isFeatured: true,
+    category: .accessories,
+  ),
+  Product(
+    id: 4,
+    name: 'Strut earrings',
+    price: 34,
+    isFeatured: false,
+    category: .accessories,
+  ),
+  Product(
+    id: 5,
+    name: 'Varsity socks',
+    price: 12,
+    isFeatured: false,
+    category: .accessories,
+  ),
+  Product(
+    id: 6,
+    name: 'Weave keyring',
+    price: 16,
+    isFeatured: false,
+    category: .accessories,
+  ),
+  Product(
+    id: 7,
+    name: 'Gatsby hat',
+    price: 40,
+    isFeatured: true,
+    category: .accessories,
+  ),
+  Product(
+    id: 8,
+    name: 'Shrug bag',
+    price: 198,
+    isFeatured: true,
+    category: .accessories,
+  ),
+  Product(
+    id: 9,
+    name: 'Gilt desk trio',
+    price: 58,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 10,
+    name: 'Copper wire rack',
+    price: 18,
+    isFeatured: false,
+    category: .home,
+  ),
+  Product(
+    id: 11,
+    name: 'Soothe ceramic set',
+    price: 28,
+    isFeatured: false,
+    category: .home,
+  ),
+  Product(
+    id: 12,
+    name: 'Hurrahs tea set',
+    price: 34,
+    isFeatured: false,
+    category: .home,
+  ),
+  Product(
+    id: 13,
+    name: 'Blue stone mug',
+    price: 18,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 14,
+    name: 'Rainwater tray',
+    price: 27,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 15,
+    name: 'Chambray napkins',
+    price: 16,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 16,
+    name: 'Succulent planters',
+    price: 16,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 17,
+    name: 'Quartet table',
+    price: 175,
+    isFeatured: false,
+    category: .home,
+  ),
+  Product(
+    id: 18,
+    name: 'Kitchen quattro',
+    price: 129,
+    isFeatured: true,
+    category: .home,
+  ),
+  Product(
+    id: 19,
+    name: 'Clay sweater',
+    price: 48,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 20,
+    name: 'Sea tunic',
+    price: 45,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 21,
+    name: 'Plaster tunic',
+    price: 38,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 22,
+    name: 'White pinstripe shirt',
+    price: 70,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 23,
+    name: 'Chambray shirt',
+    price: 70,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 24,
+    name: 'Seabreeze sweater',
+    price: 60,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 25,
+    name: 'Gentry jacket',
+    price: 178,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 26,
+    name: 'Navy trousers',
+    price: 74,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 27,
+    name: 'Walter henley (white)',
+    price: 38,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 28,
+    name: 'Surf and perf shirt',
+    price: 48,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 29,
+    name: 'Ginger scarf',
+    price: 98,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 30,
+    name: 'Ramona crossover',
+    price: 68,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 31,
+    name: 'Chambray shirt',
+    price: 38,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 32,
+    name: 'Classic white collar',
+    price: 58,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 33,
+    name: 'Cerise scallop tee',
+    price: 42,
+    isFeatured: true,
+    category: .clothing,
+  ),
+  Product(
+    id: 34,
+    name: 'Shoulder rolls tee',
+    price: 27,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 35,
+    name: 'Grey slouch tank',
+    price: 24,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 36,
+    name: 'Sunshirt dress',
+    price: 58,
+    isFeatured: false,
+    category: .clothing,
+  ),
+  Product(
+    id: 37,
+    name: 'Fine lines tee',
+    price: 58,
+    isFeatured: true,
+    category: .clothing,
+  ),
+];

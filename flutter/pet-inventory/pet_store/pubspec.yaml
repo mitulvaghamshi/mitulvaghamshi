@@ -1,0 +1,22 @@
+name: pet_store
+description: A new Flutter project.
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  flutter:
+    sdk: flutter
+  http: ^1.0.0
+  intl: ^0.20.2
+
+dev_dependencies:
+  extra_lints:
+    git: https://github.com/mitulvaghamshi/extra_lints.git
+
+flutter:
+  uses-material-design: true

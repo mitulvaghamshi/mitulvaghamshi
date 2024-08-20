@@ -1,0 +1,20 @@
+name: magic_ball8
+description: A new Flutter project.
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  extra_lints:
+    git: https://github.com/mitulvaghamshi/extra_lints.git
+
+flutter:
+  uses-material-design: true
