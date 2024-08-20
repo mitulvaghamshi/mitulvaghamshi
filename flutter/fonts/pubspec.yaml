@@ -1,0 +1,119 @@
+name: fonts
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.4
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: enjoy the time
+      fonts:
+        - asset: assets/enjoy the time/enjoy the time.otf
+    - family: enjoy the time hollow
+      fonts:
+        - asset: assets/enjoy the time/enjoy the time-hollow.otf
+    - family: enjoy the time inverse
+      fonts:
+        - asset: assets/enjoy the time/enjoy the time-inverse.otf
+    - family: eternal love
+      fonts:
+        - asset: assets/eternal love/eternal love.otf
+    - family: eternal love hollow
+      fonts:
+        - asset: assets/eternal love/eternal love-hollow.otf
+    - family: eternal love hollow inverse
+      fonts:
+        - asset: assets/eternal love/eternal love-hollow-inverse.otf
+    - family: eternal love inverse
+      fonts:
+        - asset: assets/eternal love/eternal love-inverse.otf
+    - family: frame work
+      fonts:
+        - asset: assets/frame work/frame work.otf
+    - family: frame work hollow
+      fonts:
+        - asset: assets/frame work/frame work-hollow.otf
+    - family: frame work hollow inverse
+      fonts:
+        - asset: assets/frame work/frame work-hollow-inverse.otf
+    - family: frame work filled inverse
+      fonts:
+        - asset: assets/frame work/frame work-filled-inverse.otf
+    - family: frankenstain monster
+      fonts:
+        - asset: assets/frankenstain monster/frankenstain monster.otf
+    - family: frankenstain monster hollow
+      fonts:
+        - asset: assets/frankenstain monster/frankenstain monster-hollow.otf
+    - family: gabrielle
+      fonts:
+        - asset: assets/gabrielle/gabrielle.otf
+    - family: gabrielle hollow
+      fonts:
+        - asset: assets/gabrielle/gabrielle-hollow.otf
+    - family: gabrielle hollow inverse
+      fonts:
+        - asset: assets/gabrielle/gabrielle-hollow-inverse.otf
+    - family: gabrielle inverse
+      fonts:
+        - asset: assets/gabrielle/gabrielle-inverse.otf
+    - family: game player
+      fonts:
+        - asset: assets/game player/game player.otf
+    - family: game player hollow
+      fonts:
+        - asset: assets/game player/game player-hollow.otf
+    - family: game player hollow inverse
+      fonts:
+        - asset: assets/game player/game player-hollow-inverse.otf
+    - family: game player inverse
+      fonts:
+        - asset: assets/game player/game player-inverse.otf
+    - family: nano
+      fonts:
+        - asset: assets/nano/nano.otf
+    - family: nano inverse
+      fonts:
+        - asset: assets/nano/nano-inverse.otf
+    - family: droid
+      fonts:
+        - asset: assets/droid.otf
+    - family: decorated
+      fonts:
+        - asset: assets/decorated.ttf
+    - family: digital
+      fonts:
+        - asset: assets/digital.ttf
+    - family: frame
+      fonts:
+        - asset: assets/frame.ttf
+    - family: leafly
+      fonts:
+        - asset: assets/leafly.ttf
+    - family: mandalas
+      fonts:
+        - asset: assets/mandalas.ttf
+    - family: mountain dew
+      fonts:
+        - asset: assets/mountain dew.ttf
+    - family: origami
+      fonts:
+        - asset: assets/origami.ttf
+    - family: precious
+      fonts:
+        - asset: assets/precious.ttf
+    - family: sketch rock wall
+      fonts:
+        - asset: assets/sketch rock wall.ttf
