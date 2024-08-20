@@ -1,0 +1,16 @@
+import "modules/TutorialPart.pkl"
+
+part1: TutorialPart = new {
+	name = "Basic Configuration"
+	part = 1
+}
+
+part2: TutorialPart = (part1) {
+	name =  "Filling out a Templete"
+	part = 2
+}
+
+part3: TutorialPart = (part1) {
+	name = "Writing a Templete"
+	part = 3
+}

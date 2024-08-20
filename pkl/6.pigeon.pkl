@@ -1,0 +1,6 @@
+name = "Pegeon"
+diet = "Seeds"
+features {
+  wings = 2
+  color = "Red"
+}
