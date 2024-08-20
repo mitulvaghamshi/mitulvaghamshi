@@ -1,0 +1,4 @@
+When make executes a rule, it looks at the prerequisites.
+If all the prerequisites are older than the target file, it means that none of them has changed since the last time the rule was executed.
+So make does not execute the rule.
+If, however, any prerequisite is newer than the target, the recipes are executed.

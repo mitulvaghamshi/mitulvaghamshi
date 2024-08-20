@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "start_url": ".",
+  "name": "Prt Store",
+  "short_name": "Petstore",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "description": "Personal portfolio app built with Flutter",
+  "icons": [
+    {
+      "src": "img/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    }
+  ]
+}
