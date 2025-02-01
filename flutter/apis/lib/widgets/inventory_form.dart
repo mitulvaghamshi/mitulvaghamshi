@@ -97,16 +97,16 @@ extension on _InventoryFormState {
       price: double.tryParse(_priceCtrl.text),
     );
     if (_pet.id == -1) {
-      await Inventory.add(_pet);
+      await Inventory.insert(_pet);
     } else {
-      await Inventory.edit(_pet);
+      await Inventory.update(_pet);
     }
     if (mounted) Navigator.pop(context);
   }
 
   Future<void> _onClearOrDelete() async {
     if (_pet.id != -1) {
-      await Inventory.remove(_pet);
+      await Inventory.delete(_pet);
       if (mounted) Navigator.pop(context);
     }
     _animalCtrl.clear();

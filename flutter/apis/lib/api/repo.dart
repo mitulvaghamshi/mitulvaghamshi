@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:apis/models/inventory.dart';
-import 'package:flutter/foundation.dart' show immutable, kReleaseMode;
+import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
@@ -24,7 +24,7 @@ interface class Repo<T> {
     return Repo<T>(items: list.map(fromJson));
   }
 
-  static Future<Repo<T>> fetch<T>(
+  static Future<Repo<T>> query<T>(
     Uri uri,
     T Function(Map<String, dynamic> json) fromJson,
   ) async {
@@ -36,12 +36,12 @@ interface class Repo<T> {
     throw '[Repo/fetch]: Invalid json data';
   }
 
-  static Future<bool> post<T>(Uri uri, Pet pet) async {
+  static Future<bool> insert<T>(Uri uri, Pet pet) async {
     final response = await http.post(uri, headers: _headers, body: pet.toJson);
     return response.statusCode == 200;
   }
 
-  static Future<bool> patch<T>(Uri uri, Pet pet) async {
+  static Future<bool> update<T>(Uri uri, Pet pet) async {
     final response = await http.patch(uri, headers: _headers, body: pet.toJson);
     return response.statusCode == 200;
   }

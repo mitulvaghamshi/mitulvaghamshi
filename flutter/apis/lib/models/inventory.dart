@@ -9,18 +9,18 @@ const _host = 'localhost:8080';
 @immutable
 mixin Inventory on InventoryScreen {
   static Future<Repo<Pet>> get query => //
-      Repo.fetch(Uri.http(_host, 'api/pets'), Pet.fromJson);
+      Repo.query(Uri.http(_host, 'api/pets'), Pet.fromJson);
 
   static Future<Repo<Pet>> search(String term) => //
-      Repo.fetch(Uri.http(_host, 'api/search/$term'), Pet.fromJson);
+      Repo.query(Uri.http(_host, 'api/search/$term'), Pet.fromJson);
 
-  static Future<bool> add(Pet pet) => //
-      Repo.post(Uri.http(_host, 'api'), pet);
+  static Future<bool> insert(Pet pet) => //
+      Repo.insert(Uri.http(_host, 'api'), pet);
 
-  static Future<bool> edit(Pet pet) => //
-      Repo.patch(Uri.http(_host, 'api/${pet.id}'), pet);
+  static Future<bool> update(Pet pet) => //
+      Repo.update(Uri.http(_host, 'api/${pet.id}'), pet);
 
-  static Future<bool> remove(Pet pet) => //
+  static Future<bool> delete(Pet pet) => //
       Repo.delete(Uri.http(_host, 'api/${pet.id}'));
 }
 
