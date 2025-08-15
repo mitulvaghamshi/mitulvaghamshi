@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert PDFs to Dark Mode - Offline</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main>
+    <h1>PDF Dark Mode Converter</h1>
+    <div id="inputContainer">
+      <input type="number" id="scaleFactor" placeholder="Scale Factor (1-5): 1" /> |
+      <input type="number" id="startPage" placeholder="Start Page: 1" /> |
+      <input type="number" id="endPage" placeholder="End Page: N" /> |
+      <input type="number" id="tolerance" placeholder="Color Limit (0-255): 0" />
+      <input type="file" id="fileInput" multiple accept="application/pdf" />
+      <label for="fileInput" id="uploadContainer">⊕</label>
+    </div>
+    <div id="progressContainer">
+      <div id="progressBar"></div>
+      <div id="progressText">0/0</div>
+    </div>
+    <button id="downloadBtn">⬇︎</button>
+    <div id="pdfContainer"></div>
+  </main>
+
+  <script src="lib/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "lib/pdf.worker.min.js";
+  </script>
+  <script src="lib/pdf-lib.min.js" defer></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
